@@ -6,7 +6,7 @@
 
 - **标题**：MLS-Bench: A Holistic and Rigorous Assessment of ML Research Agents
 - **作者**：Princeton / UW 等
-- **发表**：2026；社区平台 mls-bench.com
+- **发表**：ICML 2026；arXiv:2605.08678（2026-05，v3）；社区平台 mls-bench.com
 - **一句话总结**：140 个任务 × 12 个 ML 研究领域，要求 Agent 改进**可泛化、可扩展的 ML 方法**而非局部调优。
 - **速读结论**：把对象层测量从"执行已知方法"（PaperBench）推向"发明新方法"；核心发现"工程调优易、方法发明难"是评估 AI 研究能力时的重要分界。推荐。
 

@@ -6,7 +6,7 @@
 
 - **标题**：PostTrainBench: Can LLM Agents Automate LLM Post-Training?
 - **作者**：Rank 等
-- **发表**：ICML 2026
+- **发表**：ICML 2026；arXiv:2603.08640（2026-03）
 - **一句话总结**：给 Agent 一个基座模型、一块 H100、十小时，看它自主找到多强的后训练策略。
 - **速读结论**：权重级 RSI 的最小闭环实测；固定算力/时间预算天然满足 matched-budget；2026 年 10 月已出现递归自进化 Agent 登顶（AIBuildAI），是当前最活跃的回路层竞技场。推荐。
 

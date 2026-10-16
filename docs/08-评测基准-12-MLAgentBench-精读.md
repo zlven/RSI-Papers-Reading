@@ -5,7 +5,8 @@
 ## 0. 论文元信息
 
 - **标题**：MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation
-- **发表**：2023（NeurIPS 2023 Datasets & Benchmarks）
+- **作者**：Qian Huang、Jian Vora、Percy Liang、Jure Leskovec
+- **发表**：2023（笔记记为 NeurIPS 2023 Datasets & Benchmarks）；arXiv:2310.03302（2023-10）
 - **一句话总结**：13 个 ML 实验任务，Agent 读写文件并执行代码，ReAct 基线成功率 37.5%。
 
 ## 1. 要点

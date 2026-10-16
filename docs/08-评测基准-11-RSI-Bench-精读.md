@@ -5,7 +5,8 @@
 ## 0. 论文元信息
 
 - **标题**：RSI-Bench（RSI 六维评测框架）
-- **发表**：2026，GitHub `sunghunkwag/rsi-bench`（MIT），社区框架
+- **作者**：Sunghun Kwag
+- **发表**：2026，GitHub `sunghunkwag/rsi-bench`（MIT），社区框架；软件项目，非 arXiv 文献
 - **一句话总结**：目前唯一显式以 RSI 为对象的多维评测——自我修改深度/改进轨迹/算子发现/元适应/安全稳定/目标生成六轴。
 
 ## 1. 动机与设计

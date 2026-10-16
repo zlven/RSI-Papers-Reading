@@ -6,7 +6,7 @@
 
 - **标题**：MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering
 - **作者**：OpenAI
-- **发表**：ICLR 2025
+- **发表**：ICLR 2025；arXiv:2410.07095（2024-10）
 - **一句话总结**：75 个 Kaggle 竞赛端到端 ML 工程评测，按 Kaggle 奖牌制评级。
 - **速读结论**：对象层"AI 研发能力"最广泛引用的代理基准；外部锚定（Kaggle 排行榜）抗腐蚀；读结果必须先问脚手架。推荐。
 

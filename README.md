@@ -18,18 +18,22 @@
 
 | 分类 | 篇数 | 主题 |
 |---|---:|---|
-| **01 · 主线** | 22 | 哥德尔式 RSI 与自我改进智能体：Gödel Machine → STOP → Gödel Agent → SICA → DGM → MGM → HGM → HyperAgents → MetaSkill-Evolve → Self-/Co-Harness → RQGM → RSI-Anything |
-| **02 · 综述与立场** | 3 | 领域综述与前沿实验室的立场报告 |
-| **03 · 其他路线** | 8 | 权重自编辑与经典自举：SEAL、Transformer²、STaR、ReST-EM、Self-Refine、Reflexion、SPIN |
-| **04 · 零数据自博弈** | 7 | 无人类数据时判据从何而来：Absolute Zero、R-Zero、Socratic-Zero、SPICE |
-| **05 · 进化搜索** | 6 | FunSearch、AlphaEvolve、ShinkaEvolve、ThetaEvolve、EvoGit |
+| **01 · 主线** | 24 | 哥德尔式 RSI 与自我改进智能体：Gödel Machine → STOP → Gödel Agent → SICA → DGM → MGM → HGM → HyperAgents → MetaSkill-Evolve → Self-/Co-Harness → RQGM → RSI-Anything → SIFT / GEA |
+| **02 · 综述与立场** | 5 | 领域综述、RSI 分级框架与前沿实验室的立场报告 |
+| **03 · 其他路线** | 8 | 权重自编辑与经典自举：SEAL、Transformer²、STaR、ReST-EM、Self-Refine、Reflexion、Self-Rewarding、SPIN |
+| **04 · 零数据自博弈** | 7 | 无人类数据时判据从何而来：Absolute Zero、R-Zero、Socratic-Zero、Vision-Zero、SPICE、Self-Challenging、SeRL |
+| **05 · 进化搜索** | 6 | FunSearch、AlphaEvolve、ShinkaEvolve、ThetaEvolve、EvoGit、LLM2LLM |
 | **06 · 经验与上下文** | 4 | 经验资产化的载体谱系：Voyager、ACE、EvolveR、AFlow |
-| **07 · 自动化科研** | 3 | AI Scientist v1/v2、AIDE² |
-| **合计** | **53** | 完整清单见 [`docs/references.md`](docs/references.md) |
+| **07 · 自动化科研** | 4 | AI Scientist v1/v2、AIDE²、AIDE |
+| **08 · 评测基准** | 15 | "怎样才算真的在改进"：对象层代理基准、回路层审计、安全压测、过程与终身层 |
+| **合计** | **73** | 完整清单见 [`docs/references.md`](docs/references.md) |
 
 ## 分析框架
 
-每篇精读固定按同一套模板展开（0–9 节），其中两个框架贯穿全系列：
+每篇精读按《精读模板 v1.0》撰写，节数随阅读深度分**三档**——**完整精读**（`## 0.`–`## 9.`，58 篇）、
+**简读**（至少 `## 0.`–`## 4.`，6 篇）、**卡片式**（至少 `## 0.`–`## 2.`，9 篇）。
+档位在[总索引](docs/index.md)每行标注；`check_notes.py` 按对应档位校验必备小节，档位不同不算「缺小节」。
+其中两个框架贯穿全系列：
 
 **评估三问** —— 每篇第 5 节回答：
 
@@ -44,6 +48,7 @@
 | **L0** | 一阶改进：改进器固定，改进对象是外部产物 | FunSearch、AlphaEvolve、ADAS |
 | **L0.5** | 边界形态：推理时自我修正 / teacher 外置循环 | Self-Refine、LLM2LLM、AFlow |
 | **L1** | 自举循环：模型产出变成训练信号反过来改变模型 | STaR、ReST-EM、SPIN |
+| **L1- / L1+** | L1 变体：记忆/上下文级持久化（-）；判据参与共进化（+） | Reflexion、Voyager、ACE（-）；Self-Rewarding（+） |
 | **L1.5** | 课程自产：连"学什么"都由系统内生 | Absolute Zero、R-Zero、SPICE |
 | **L2** | 改进者可被替换/改写，但改进规则固定 | SICA、Self-Harness、AIDE² |
 | **L3** | 完全自指：改写逻辑自身也在可改写范围内 | Gödel Agent、HSI、MetaSkill-Evolve、HyperAgents |
@@ -61,11 +66,11 @@
 │   ├── index.md               # 总索引：分级图例 + 评估三问 + 推荐阅读路径
 │   ├── references.md          # 参考文献清单（由脚本从笔记自动抽取生成）
 │   ├── 01-主线-01-Gödel Machine理论源头-精读.md
-│   └── …                      # 共 50 篇精读
+│   └── …                      # 共 73 篇精读，分 8 个分类
 ├── scripts/                   # 笔记维护脚本
 │   ├── gen_nav.py             # 依文件名重生成 mkdocs.yml 的侧边栏导航
 │   ├── extract_refs.py        # 抽取论文元数据，生成 docs/references.md
-│   └── check_notes.py         # 一致性自检：编码 / 模板完整性 / 断链 / 字符规范
+│   └── check_notes.py         # 一致性自检：编码 / 分档模板完整性 / 断链 / 字符规范
 ├── mkdocs.yml                 # 站点配置（导航区块由 gen_nav.py 自动维护）
 ├── requirements.txt           # 构建依赖（mkdocs-material、jieba）
 ├── CHANGELOG.md               # 更新日志与待办
@@ -93,11 +98,13 @@ mkdocs serve          # 打开 http://127.0.0.1:8000
 ## 新增一篇精读
 
 文件名必须遵循 `分类号-分类名-序号-标题-精读.md`，例如
-`01-主线-19-NewPaper-精读.md`（分类号 `01`–`07`，分类名须与既有分类一致）。
+`01-主线-25-NewPaper-精读.md`（分类号 `01`–`08`，分类名须与既有分类一致）。
+深度自选：写卡片式笔记，只需在开头的模板说明行里写明「（卡片式）」，
+`check_notes.py` 便会按卡片式档位（`## 0.`–`## 2.`）而非完整档校验，不会误报缺小节。
 之后依次运行：
 
 ```bash
-python scripts/check_notes.py     # 自检：模板 0–9 节是否齐全、有无断链
+python scripts/check_notes.py     # 自检：按深度档位校验必备小节、有无断链
 python scripts/gen_nav.py         # 把新笔记挂到侧边栏
 python scripts/extract_refs.py    # 刷新参考文献清单
 ```

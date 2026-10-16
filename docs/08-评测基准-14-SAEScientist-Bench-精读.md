@@ -4,8 +4,9 @@
 
 ## 0. 论文元信息
 
-- **标题**：SAEScientist-Bench
-- **发表**：2026
+- **标题**：SAEScientist-Bench（Can AI Agents Conduct Autonomous SAE Interpretability Research?）
+- **作者**：Yuqiao Tan、Shizhu He、Jun Zhao、Kang Liu
+- **发表**：arXiv:2609.09113（2026-09）
 - **一句话总结**：让 Agent 自主做 SAE 可解释性研究——给定目标概念与 Gemma Scope 的 131K+ SAE 特征字典做对比探测。
 
 ## 1. 要点

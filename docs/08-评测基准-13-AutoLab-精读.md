@@ -4,8 +4,9 @@
 
 ## 0. 论文元信息
 
-- **标题**：AutoLab
-- **发表**：2026
+- **标题**：AutoLab（Can Frontier Models Solve Long-Horizon Auto Research and Engineering Tasks?）
+- **作者**：Zhangchen Xu 等
+- **发表**：arXiv:2606.05080（2026-06）
 - **一句话总结**：36 个专家策划的长程闭环优化任务——测"持续多轮优化"而非单次解题。
 
 ## 1. 要点

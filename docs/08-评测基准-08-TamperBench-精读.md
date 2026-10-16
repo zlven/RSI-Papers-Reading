@@ -5,7 +5,8 @@
 ## 0. 论文元信息
 
 - **标题**：TamperBench（对齐篡改压测基准）
-- **发表**：KDD 2026；代码：`criticalml-uw/TamperBench`
+- **作者**：Saad Hossain、Tom Tseng、Punya Syon Pandey 等
+- **发表**：KDD 2026；arXiv:2602.06911（2026-02）；代码：`criticalml-uw/TamperBench`
 - **一句话总结**：21 个开源权重模型 × 9 种篡改攻击的系统压测——微调、权重修改、表征篡改之后，安全对齐还在吗？
 - **速读结论**：权重级自我修改的安全底线测量；"每个模型都存在高效攻击、现有防御基本全败"是 RSI 安全讨论必须面对的事实。推荐。
 

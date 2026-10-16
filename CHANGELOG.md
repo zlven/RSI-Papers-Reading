@@ -119,9 +119,104 @@ python scripts/extract_refs.py   → 53 篇文献、0 篇待补
 
 ---
 
-## 待办
+## 2026-10-16 — 新增 20 篇：开辟「08 · 评测基准」分类
 
-上一轮列出的三类问题**已全部清零**。
+**新增精读（20 篇）**
+
+- **01 · 主线**：`23-SIFT`（L2，简读）、`24-GEA`（L2.5，简读）——2026 年的「评测经济学」线与
+  「群体进化」线：SIFT 用 Bradley-Terry LLM 裁判预筛候选、只为少数候选付全量评测费
+  （Polyglot 35.1% vs DGM 30.7%，成本约 1/10）；GEA 以「组」而非「树」为进化单元 + 经验共享
+  （SWE-bench Verified 71.0% vs DGM 56.7%）。
+- **02 · 综述与立场**：`04-D2I分级综述`（卡片式）、`05-Self-Evolving-Agents综述`（卡片式）。
+- **07 · 自动化科研**：`04-AIDE`（L2，简读）——AIDE² 的内层基座、「脚手架贡献可翻三倍」的证据源头。
+- **08 · 评测基准（全新分类，15 篇）**：01 RSIBench-Data、02 SEABench、03 PaperBench、
+  04 PostTrainBench、05 MLE-bench、06 RE-Bench 与 HCAST、07 MLS-Bench、08 TamperBench、
+  09 PATH-Bench、10 LifelongAgentBench、11 RSI-Bench、12 MLAgentBench、13 AutoLab、
+  14 SAEScientist-Bench、15 SAHOO。该簇统一回答「**怎样才算真的在改进**」，按测量对象分四类：
+  对象层代理基准（05/07/03/06/13/12/14）、回路层审计（01/04）、安全压测（02/08/15）、
+  过程与终身层（09/10/11）。
+
+系列规模 53 → **73 篇**（主线 22→24、综述 3→5、自动化科研 3→4、评测基准 0→15）。
+
+**新增分类 08 · 评测基准**
+
+`gen_nav.py` 的 `CATEGORY_TITLES` / `NUM_TO_CAT` 与 `extract_refs.py` 的 `CATEGORY_TITLES`
+各补一条。文件名分类号 `08`、分类名 `评测基准` 即被自动收纳，侧边栏成为 8 个分组、73 条导航。
+
+**深度分档成为正式规则**
+
+20 篇新笔记的节数**随阅读深度伸缩**（完整 10 节 / 简读 5–8 节 / 卡片式 2–3 节），
+原先「必备 `## 0.`–`## 9.`」的校验会把有意的分档误报成「缺小节」。现改为一等规则：
+
+- `check_notes.py` 以 `note_tier()` 判定档位——笔记开头写明「（卡片式）」即自声明，
+  否则按节数（10 节＝完整精读、≥5 节＝简读、更少＝卡片式）——再按 `REQUIRED_BY_TIER`
+  校验各自必备小节：完整精读 `## 0.`–`## 9.`、简读至少 `## 0.`–`## 4.`、卡片式至少 `## 0.`–`## 2.`。
+- `docs/index.md` 与根 `README.md` **每行/每档均标注档位**并说明校验差异，站点立即可构建，
+  分档意图被保留且可见。
+
+**补齐 12 篇缺失的 arXiv 编号（12 → 0）**
+
+编号**逐篇直接打开 arXiv 摘要页确认**，非转述搜索结果，亦未作任何推断。笔记头部只写入已核实的编号：
+
+| 文件 | 补入内容 |
+|---|---|
+| `01-主线-23-SIFT-精读.md` | arXiv:2609.19526（*Self Improvement via Fast Tree-search*，MIT / Sakana AI） |
+| `01-主线-24-GEA-精读.md` | arXiv:2602.04837（*Group-Evolving Agents*，ICLR 2026） |
+| `02-综述-04-D2I分级综述-精读.md` | **非 arXiv**——Preprints.org 预印本，DOI `10.20944/preprints202608.0051.v1` |
+| `08-评测基准-04-PostTrainBench-精读.md` | arXiv:2603.08640（ICML 2026） |
+| `08-评测基准-05-MLE-bench-精读.md` | arXiv:2410.07095（ICLR 2025） |
+| `08-评测基准-07-MLS-Bench-精读.md` | arXiv:2605.08678（ICML 2026） |
+| `08-评测基准-08-TamperBench-精读.md` | arXiv:2602.06911（KDD 2026） |
+| `08-评测基准-11-RSI-Bench-精读.md` | **非 arXiv**——GitHub `sunghunkwag/rsi-bench`（MIT）软件项目，无配套论文 |
+| `08-评测基准-12-MLAgentBench-精读.md` | arXiv:2310.03302 |
+| `08-评测基准-13-AutoLab-精读.md` | arXiv:2606.05080 |
+| `08-评测基准-14-SAEScientist-Bench-精读.md` | arXiv:2609.09113 |
+| `08-评测基准-15-SAHOO-精读.md` | arXiv:2603.06333（ICLR 2026 Workshop on **AI with** RSI） |
+
+新增的两条「非 arXiv」声明同样被两个脚本识别，`extract_refs.py` 的输出因此收敛到
+**73 篇文献、0 篇待补**。空白的 `作者` 字段一并按论文页补入（SIFT / GEA / D2I / TamperBench /
+RSI-Bench / MLAgentBench / AutoLab / SAEScientist-Bench / SAHOO），使 `references.md` 的作者列不再退化为「—」。
+
+**顺带修掉一个会持续复发的显示错误**：`extract_refs.py` 的「链接」列对无 arXiv 的条目一律输出
+「**待补**」，与「已声明非 arXiv」的语义直接矛盾——D2I 与 RSI-Bench 一入册就带上了这个假待办。
+现改为：有 `OVERRIDES` 时用真实载体，否则输出「—（非 arXiv 文献）」，只有**真正缺编号**的条目
+才显示「待补」。两条同时补上可核实的载体链接（D2I 指向其配套仓库、RSI-Bench 指向 GitHub 仓库）。
+
+**本轮修订的元数据错误**
+
+- **GEA 正名**：原笔记展开名写作「Generative Evolutionary Agent」，检索**无任何出处**；
+  该文实为 ***Group-Evolving Agents: Open-Ended Self-Improvement via Experience Sharing***
+  （arXiv:2602.04837）。笔记正文的数字（SWE-bench Verified 71.0%、Polyglot 88.3%）与论文完全吻合，
+  故仅订正名称与头部，正文保留。
+- **SAHOO 的 workshop 全名**：由「Workshop on Recursive Self-Improvement」更正为
+  「Workshop on **AI with** Recursive Self-Improvement」（arXiv:2603.06333 与 OpenReview 页一致）。
+
+**仍需人工确认（本轮未擅自改动，仅在此记录）**
+
+- **MLAgentBench 的会议归属**：arXiv:2310.03302 摘要页**无 Comments 字段**，无法证实笔记所记的
+  「NeurIPS 2023 Datasets & Benchmarks」；检索结果则指向 ICML 2024。已在笔记中把该说法标注为
+  「笔记记为…」并附上 arXiv 号，等确认后再定。
+- **MLS-Bench 的标题**：笔记写 *A Holistic and Rigorous Assessment of ML Research Agents*，
+  官方标题为 *A Holistic and Rigorous Assessment of **AI Systems on Building Better AI***（arXiv:2605.08678）。
+- **TamperBench 的主题框架**：论文实际是**开放权重 LLM 的抗篡改基准**（jailbreak-tuning、LoRA、
+  后门、表示空间攻击），笔记以「RSI 系统自我更新的安全底线」框定——作为本系列的解读角度成立，
+  但不宜被当作论文自陈的定位。
+- **`02-综述-02` 与 `02-综述-04` 的 L1–L5 分级同源**：两者共用同一套 L1–L5 坐标，检索提示可能
+  出自同组作者。本轮按既有结构保留为两篇，未作合并。
+
+**本轮脚本链复核**
+
+```
+python scripts/check_notes.py    → 73 篇：NFC ✓ / 站内链接 ✓ / 缺 arXiv 号 0 篇 / 非标准连字符 0 处
+                                   深度分档：完整精读 58 篇 ｜ 简读 6 篇 ｜ 卡片式 9 篇，全部达标
+python scripts/gen_nav.py        → 8 个分组、73 条导航（01 主线 24 / 02 综述 5 / 03 8 /
+                                   04 7 / 05 6 / 06 4 / 07 4 / 08 评测基准 15）
+python scripts/extract_refs.py   → 73 篇文献、0 篇待补
+```
+
+---
+
+## 待办
 
 ### 1. 缺少 arXiv 编号（0 篇）✓
 
@@ -135,18 +230,18 @@ python scripts/extract_refs.py   → 53 篇文献、0 篇待补
 
 4 篇已全部补齐 0–9 节，见上文表格。
 
-### 3. 嵌套重复目录待删除
+### 3. 嵌套重复目录（已删除）✓
 
-`RSI精读/RSI精读/`（54 个文件）的内容已全部提取进 `docs/` 与根 `README.md`——逐一逐段核对确认
-**无任何内容遗漏**（49 篇共有笔记中 40 篇正文完全一致、9 篇为 `docs/` 侧更全；3 篇新笔记已搬入并
-规范化头部；上游索引的 L3 代表、19–21 行、推荐阅读路径、L3 三形态对照均已并入 `docs/index.md`）。
+`RSI精读/RSI精读/`（54 个 tracked 文件）先经逐一核对确认**无任何内容遗漏**（49 篇共有笔记中
+40 篇正文完全一致、9 篇为 `docs/` 侧更全；3 篇新笔记已搬入并规范化头部；上游索引的 L3 代表、
+19–21 行、推荐阅读路径、L3 三形态对照均已并入 `docs/index.md`），再以 `git rm -r RSI精读` 删除，
+提交 `b5beb40`（54 files changed、7237 deletions(-)，**无任何非删除改动**）。
 
-该目录**已被提交进仓库**（54 个 tracked 文件），删除需走 `git rm`：
+### 4. 待人工确认的文献信息（4 条）
 
-```bash
-git rm -r RSI精读
-git commit -m "删除嵌套重复目录 RSI精读/RSI精读/"
-```
+见上一节「仍需人工确认」：MLAgentBench 的会议归属、MLS-Bench 的标题、TamperBench 的主题框架、
+`02-综述-02` 与 `02-综述-04` 的分级同源。四项均已在笔记或本日志中留有出处与存疑标注，
+不影响站点构建，确认后可各自单独修订。
 
 > 待决：上游索引写的「模板文件见 `../RSI论文精读Prompt模板.md`」指向仓库外路径，该文件在
 > 上级目录**并不存在**，故 `docs/index.md` 保留原措辞「模板文件未收录进本仓库」。

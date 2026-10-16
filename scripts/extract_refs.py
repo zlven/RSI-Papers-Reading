@@ -104,6 +104,13 @@ OVERRIDES: dict[str, dict[str, str]] = {
         "venue": "Nature 625, 468-475（2024）",
         "link": "[Nature](https://www.nature.com/articles/s41586-023-06924-6)",
     },
+    # 非 arXiv 文献在「链接」列指向其真实载体，避免退化成「待补」
+    "02-综述-04-D2I分级综述-精读.md": {
+        "link": "[配套仓库](https://github.com/D2I-ai/awesome-recursive-self-improving-agents)",
+    },
+    "08-评测基准-11-RSI-Bench-精读.md": {
+        "link": "[sunghunkwag/rsi-bench](https://github.com/sunghunkwag/rsi-bench)",
+    },
 }
 
 
@@ -207,7 +214,13 @@ def extract(path: pathlib.Path) -> dict[str, str]:
         "venue": extract_venue(lines, head),
         "arxiv": arxiv or "",
         "non_arxiv": bool(NON_ARXIV_RE.search(head)),
-        "link": f"[arXiv:{arxiv}](https://arxiv.org/abs/{arxiv})" if arxiv else "**待补**",
+        # 头部已声明「非 arXiv 文献」的条目本就无编号，不该显示成「待补」；
+        # 多数在 OVERRIDES 里给出真实载体（开源仓库、出版社页面）作为链接。
+        "link": (
+            f"[arXiv:{arxiv}](https://arxiv.org/abs/{arxiv})"
+            if arxiv
+            else "—（非 arXiv 文献）" if NON_ARXIV_RE.search(head) else "**待补**"
+        ),
     }
     info.update(OVERRIDES.get(path.name, {}))
     return info

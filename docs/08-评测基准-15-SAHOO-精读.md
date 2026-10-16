@@ -5,7 +5,8 @@
 ## 0. 论文元信息
 
 - **标题**：SAHOO（RSI 过程目标漂移监控）
-- **发表**：ICLR 2026 Workshop on Recursive Self-Improvement
+- **作者**：Subramanyam Sahoo、Aman Chadha、Vinija Jain、Divya Chaudhary
+- **发表**：ICLR 2026 Workshop on AI with Recursive Self-Improvement；arXiv:2603.06333（2026-03）
 - **一句话总结**：监控 RSI 过程中的目标漂移与约束保持——代际间"系统还在优化原来的东西吗"。
 
 ## 1. 要点
