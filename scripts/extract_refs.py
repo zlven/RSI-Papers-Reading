@@ -71,7 +71,7 @@ OVERRIDES: dict[str, dict[str, str]] = {
         "venue": "IDSIA 技术报告 2003 / Springer《Artificial General Intelligence》2007",
     },
     # 以下几篇 H1 的「精读：」之后是中文副标题而非英文全称，改用笔记自带的简称
-    "01-主线-08-Live-SWE-agent-精读.md": {"title": "Live‑SWE‑agent"},
+    "01-主线-08-Live-SWE-agent-精读.md": {"title": "Live-SWE-agent"},
     "01-主线-16-DemoEvolve-精读.md": {"title": "DemoEvolve"},
     "01-主线-17-Red Queen Gödel Machine-精读.md": {
         "title": "Red Queen Gödel Machine（智能体与其评估器的共同进化）"

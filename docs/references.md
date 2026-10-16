@@ -26,32 +26,32 @@
 | 05 | A Self-Improving Coding Agent (SICA) | Maxime Robeyns、Martin Szummer、Laurence Aitchison（布里斯托大学 / iGent AI） | arXiv:2504.15228（2025 年 4 月）；标准 Python 实现、无 DSL、全开源 | [arXiv:2504.15228](https://arxiv.org/abs/2504.15228) | [笔记](01-主线-05-SICA-精读.md) |
 | 06 | Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents | Jenny Zhang*、Shengran Hu*、Cong Lu、Robert Lange、Jeff Clune（UBC / Vector Institute / Saka… | arXiv:2505.22954（2025 年 5 月），ICLR 2026 Oral；代码开源 | [arXiv:2505.22954](https://arxiv.org/abs/2505.22954) | [笔记](01-主线-06-Darwin%20Gödel%20Machine-精读.md) |
 | 07 | Hierarchical Gödel Machine | KAUST | 预印本 2025 | **待补** | [笔记](01-主线-07-HGM-精读.md) |
-| 08 | Live‑SWE‑agent | UIUC 团队 | 预印本 2025 | **待补** | [笔记](01-主线-08-Live-SWE-agent-精读.md) |
+| 08 | Live-SWE-agent | UIUC 团队 | 预印本 2025 | **待补** | [笔记](01-主线-08-Live-SWE-agent-精读.md) |
 | 09 | Harnesses That Improve Themselves | Hangfan Zhang, Shao Zhang, Kangcong Li, Chen Zhang, Yang Chen, Yiqun Zhang, Lei Bai, Sh… | 预印本 2026 | [arXiv:2606.09498](https://arxiv.org/abs/2606.09498) | [笔记](01-主线-09-Self-Harness-精读.md) |
-| 10 | Co‑Evolving Harnesses and Model Weights for LLM Agents | Zhengyu Chen, Teng Xiao, Huaisheng Zhu, Yige Yuan, Luan Zhang, Jingang Wang | 预印本 2026 | [arXiv:2607.22688](https://arxiv.org/abs/2607.22688) | [笔记](01-主线-10-Co-Harness-精读.md) |
-| 11 | Self‑Evolution through Source‑Level Rewriting in Autonomous Agent Systems | Qianshu Cai, Yonggang Zhang, Xianzhang Jia, Huajiang Zheng, Wei Xue, Jun Song, Xinmei T… | 预印本 2026 | [arXiv:2605.22794](https://arxiv.org/abs/2605.22794) | [笔记](01-主线-11-MOSS-精读.md) |
-| 12 | A Self‑Evolving Agent Protocol | Wentao Zhang, Zhe Zhao, Haibin Wen, Yingcheng Wu, Cankun Guo, Ming Yin, Bo An, Mengdi W… | 预印本 2026 | [arXiv:2604.15034](https://arxiv.org/abs/2604.15034) | [笔记](01-主线-12-Autogenesis-精读.md) |
+| 10 | Co-Evolving Harnesses and Model Weights for LLM Agents | Zhengyu Chen, Teng Xiao, Huaisheng Zhu, Yige Yuan, Luan Zhang, Jingang Wang | 预印本 2026 | [arXiv:2607.22688](https://arxiv.org/abs/2607.22688) | [笔记](01-主线-10-Co-Harness-精读.md) |
+| 11 | Self-Evolution through Source-Level Rewriting in Autonomous Agent Systems | Qianshu Cai, Yonggang Zhang, Xianzhang Jia, Huajiang Zheng, Wei Xue, Jun Song, Xinmei T… | 预印本 2026 | [arXiv:2605.22794](https://arxiv.org/abs/2605.22794) | [笔记](01-主线-11-MOSS-精读.md) |
+| 12 | A Self-Evolving Agent Protocol | Wentao Zhang, Zhe Zhao, Haibin Wen, Yingcheng Wu, Cankun Guo, Ming Yin, Bo An, Mengdi W… | 预印本 2026 | [arXiv:2604.15034](https://arxiv.org/abs/2604.15034) | [笔记](01-主线-12-Autogenesis-精读.md) |
 | 13 | Agentic Harness Engineering | Jiahang Lin, Shichun Liu, Chengjun Pan, Lizhi Lin, Shihan Dou, Zhiheng Xi, Xuanjing Hua… | 预印本 2026 | [arXiv:2604.25850](https://arxiv.org/abs/2604.25850) | [笔记](01-主线-13-AHE-精读.md) |
 | 14 | Hierarchical Agent Loop Optimizer（Context Labs） | Context Labs / inference.net | 开源项目（非 arXiv 论文） | [context-labs/halo](https://github.com/context-labs/halo) | [笔记](01-主线-14-HALO-精读.md) |
-| 15 | End‑to‑End Optimization of Model Harnesses | Yoonho Lee, Roshen Nair, Qizheng Zhang, Kangwook Lee, Omar Khattab, Chelsea Finn | 预印本 2026 | [arXiv:2603.28052](https://arxiv.org/abs/2603.28052) | [笔记](01-主线-15-Meta-Harness-精读.md) |
+| 15 | End-to-End Optimization of Model Harnesses | Yoonho Lee, Roshen Nair, Qizheng Zhang, Kangwook Lee, Omar Khattab, Chelsea Finn | 预印本 2026 | [arXiv:2603.28052](https://arxiv.org/abs/2603.28052) | [笔记](01-主线-15-Meta-Harness-精读.md) |
 | 16 | DemoEvolve | Lirong Che, Yuzhe Yang, Peiwen Lin, Chuang Wang, Xueqian Wang, Jian Su | 预印本 2026 | [arXiv:2605.24539](https://arxiv.org/abs/2605.24539) | [笔记](01-主线-16-DemoEvolve-精读.md) |
 | 17 | Red Queen Gödel Machine（智能体与其评估器的共同进化） | Alex Iacob, Andrej Jovanović, William F. Shen, Daniel Burkhardt, Meghdad Kurmanji, Nurb… | 预印本 2026 | [arXiv:2606.26294](https://arxiv.org/abs/2606.26294) | [笔记](01-主线-17-Red%20Queen%20Gödel%20Machine-精读.md) |
-| 18 | Hierarchical Self‑Improvement | Tailin Zhou | 预印本 2026 | [arXiv:2608.08466](https://arxiv.org/abs/2608.08466) | [笔记](01-主线-18-Hierarchical%20Self-Improvement-精读.md) |
+| 18 | Hierarchical Self-Improvement | Tailin Zhou | 预印本 2026 | [arXiv:2608.08466](https://arxiv.org/abs/2608.08466) | [笔记](01-主线-18-Hierarchical%20Self-Improvement-精读.md) |
 
 ## 02 · 综述与立场
 
 | # | 论文 | 作者 / 团队 | 发表 | 链接 | 精读 |
 |---|---|---|---|---|---|
-| 01 | Recursive Self‑Improvement in AI: From Bounded Self‑Refinement to Autonomous Research Loops | Mingguang Chen, Licheng Wang, Bo Qu | 预印本 2026 | [arXiv:2607.07663](https://arxiv.org/abs/2607.07663) | [笔记](02-综述-01-Bounded-to-Autonomous-综述-精读.md) |
-| 02 | The Last AI Built by Humans: Toward Genuine Recursive Self‑Improvement | Yi Duan, Ying Liu, Zirui Tang, …, Xuanhe Zhou, Fan Wu 等 36 位作者 | 预印本 2026 | [arXiv:2609.11873](https://arxiv.org/abs/2609.11873) | [笔记](02-综述-02-The%20Last%20AI%20Built%20by%20Humans-精读.md) |
+| 01 | Recursive Self-Improvement in AI: From Bounded Self-Refinement to Autonomous Research Loops | Mingguang Chen, Licheng Wang, Bo Qu | 预印本 2026 | [arXiv:2607.07663](https://arxiv.org/abs/2607.07663) | [笔记](02-综述-01-Bounded-to-Autonomous-综述-精读.md) |
+| 02 | The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement | Yi Duan, Ying Liu, Zirui Tang, …, Xuanhe Zhou, Fan Wu 等 36 位作者 | 预印本 2026 | [arXiv:2609.11873](https://arxiv.org/abs/2609.11873) | [笔记](02-综述-02-The%20Last%20AI%20Built%20by%20Humans-精读.md) |
 | 03 | When AI Builds Itself（Anthropic Institute, 2026-06-04） | Marina Favaro & Jack Clark，Anthropic Institute，2026-06-04 发布 | Anthropic Institute 立场报告 | —（非 arXiv 文献） | [笔记](02-综述-03-Anthropic-When%20AI%20Builds%20Itself-精读.md) |
 
 ## 03 · 其他路线：权重自编辑与经典自举
 
 | # | 论文 | 作者 / 团队 | 发表 | 链接 | 精读 |
 |---|---|---|---|---|---|
-| 01 | Self‑Adapting Language Models | Adam Zweiger, Jyothish Pari, Han Guo, Ekin Akyürek, Yoon Kim, Pulkit Agrawal | NeurIPS 2025 | [arXiv:2506.10943](https://arxiv.org/abs/2506.10943) | [笔记](03-其他路线-01-SEAL-精读.md) |
-| 02 | Self‑Adaptive LLMs | Qi Sun, Edoardo Cetin, Yujin Tang | 预印本 2025 | [arXiv:2501.06252](https://arxiv.org/abs/2501.06252) | [笔记](03-其他路线-02-Transformer²-精读.md) |
+| 01 | Self-Adapting Language Models | Adam Zweiger, Jyothish Pari, Han Guo, Ekin Akyürek, Yoon Kim, Pulkit Agrawal | NeurIPS 2025 | [arXiv:2506.10943](https://arxiv.org/abs/2506.10943) | [笔记](03-其他路线-01-SEAL-精读.md) |
+| 02 | Self-Adaptive LLMs | Qi Sun, Edoardo Cetin, Yujin Tang | 预印本 2025 | [arXiv:2501.06252](https://arxiv.org/abs/2501.06252) | [笔记](03-其他路线-02-Transformer²-精读.md) |
 | 03 | STaR: Bootstrapping Reasoning with Reasoning | Zelikman, Wu, Mu, Goodman | NeurIPS 2022 | [arXiv:2203.14465](https://arxiv.org/abs/2203.14465) | [笔记](03-其他路线-03-STaR-精读.md) |
 | 04 | Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models | Singh et al. (Google DeepMind) | TMLR 2023 | [arXiv:2312.06585](https://arxiv.org/abs/2312.06585) | [笔记](03-其他路线-04-ReST-EM-精读.md) |
 | 05 | Self-Refine: Iterative Refinement with Self-Feedback | Madaan et al | NeurIPS 2023 | [arXiv:2303.17651](https://arxiv.org/abs/2303.17651) | [笔记](03-其他路线-05-Self-Refine-精读.md) |

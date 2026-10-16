@@ -1,4 +1,4 @@
-# Self‑Harness 精读：Harnesses That Improve Themselves
+# Self-Harness 精读：Harnesses That Improve Themselves
 
 > **论文信息**：Hangfan Zhang, Shao Zhang, Kangcong Li, Chen Zhang, Yang Chen, Yiqun Zhang, Lei Bai, Shuyue Hu；arXiv:2606.09498（2026-06，v1）
 > **精读日期**：2026-10-15 ｜ **阅读方式**：arXiv 摘要 + HTML v1 方法/实验章节 + 官方 GitHub 结果表
@@ -9,16 +9,16 @@
 
 | 项目 | 内容 |
 |---|---|
-| **一句话概括** | 提出 Self‑Harness 范式：让 LLM 智能体**改进自己的运行 harness**（提示词、工具定义、路由规则、输出校验门等脚手架），不依赖人类工程师或更强的外部智能体；通过"弱点挖掘 → harness 提案 → 回归验证"三阶段迭代循环，在 Terminal‑Bench‑2.0 / SWE‑bench Verified / AppWorld 上、对三个不同家族的基座模型全部取得 held‑in 与 held‑out 双升，相对增益最高 132% |
+| **一句话概括** | 提出 Self-Harness 范式：让 LLM 智能体**改进自己的运行 harness**（提示词、工具定义、路由规则、输出校验门等脚手架），不依赖人类工程师或更强的外部智能体；通过"弱点挖掘 → harness 提案 → 回归验证"三阶段迭代循环，在 Terminal-Bench-2.0 / SWE-bench Verified / AppWorld 上、对三个不同家族的基座模型全部取得 held-in 与 held-out 双升，相对增益最高 132% |
 | **所属领域** | 智能体 harness 工程 × 自我改进 × 终端/软件工程/应用操作基准 |
 | **RSI 分级** | **L2（改进者可替换规则固定）**——被改进对象是自身 harness（运行脚手架），改进规则（三阶段循环、显式接受准则）固定；权重与评估器冻结是论文明示的边界 |
-| **核心贡献标签** | "harness 是模型特定的"问题陈述；三阶段闭环（Weakness Mining / Harness Proposal / Proposal Validation）；显式接受规则（held‑in 提升 + held‑out 不回归）；九个 模型×基准 组合全部正增益；模型特定 harness 的证据 |
+| **核心贡献标签** | "harness 是模型特定的"问题陈述；三阶段闭环（Weakness Mining / Harness Proposal / Proposal Validation）；显式接受规则（held-in 提升 + held-out 不回归）；九个 模型×基准 组合全部正增益；模型特定 harness 的证据 |
 
 ---
 
 ## 1. 研究背景与动机
 
-**领域位置**：智能体系统工程。论文的核心观察是：智能体性能由**基座模型与 harness 共同决定**——harness 是模型与环境之间的中介层。不同模型行为模式不同，因此**有效的 harness 设计本质上是模型特定的（model‑specific）**。
+**领域位置**：智能体系统工程。论文的核心观察是：智能体性能由**基座模型与 harness 共同决定**——harness 是模型与环境之间的中介层。不同模型行为模式不同，因此**有效的 harness 设计本质上是模型特定的（model-specific）**。
 
 **痛点**：当前 harness 几乎全部由人类专家手工工程。随着模型家族增多、迭代加速，"每个模型配一个人工调优 harness"的范式**扩展性极差**。
 
@@ -26,8 +26,8 @@
 
 **与两条已有路线的区分**（§3 开头明示）：
 1. **人工 harness 工程**：专家检查 + 手工修改——扩展性差；
-2. **外部优化器路线**（如用 GPT‑4 当优化器）：把 harness 设计当作搜索空间，但优化器是比被优化智能体**更强的外部模型**——这回避了"系统能否靠自己改进"的问题。
-Self‑Harness 自居**中间地带**：固定模型 + 由执行证据驱动的显式自我改进循环。
+2. **外部优化器路线**（如用 GPT-4 当优化器）：把 harness 设计当作搜索空间，但优化器是比被优化智能体**更强的外部模型**——这回避了"系统能否靠自己改进"的问题。
+Self-Harness 自居**中间地带**：固定模型 + 由执行证据驱动的显式自我改进循环。
 
 ---
 
@@ -43,8 +43,8 @@ Self‑Harness 自居**中间地带**：固定模型 + 由执行证据驱动的�
 ### 2.2 理论依据与方法论谱系
 
 - **无形式理论**；方法论上是"证据驱动的迭代工程"的自动化：观察 → 归因 → 最小干预 → 回归验证，即经典软件工程 debug 循环把"工程师"换成"模型自己"。
-- 与 DGM/SICA 的谱系关系：同属"改自身代码/脚手架"家族，但 Self‑Harness 刻意把修改范围收窄到 harness（不动智能体主控架构），并要求**最小 diff**。
-- "权重与评估器固定"是明示前提（GitHub overview 原文："Self‑Harness keeps the model weights and evaluator fixed while improving the surrounding harness"）。
+- 与 DGM/SICA 的谱系关系：同属"改自身代码/脚手架"家族，但 Self-Harness 刻意把修改范围收窄到 harness（不动智能体主控架构），并要求**最小 diff**。
+- "权重与评估器固定"是明示前提（GitHub overview 原文："Self-Harness keeps the model weights and evaluator fixed while improving the surrounding harness"）。
 
 ### 2.3 与已有工作的联系
 
@@ -61,7 +61,7 @@ Self‑Harness 自居**中间地带**：固定模型 + 由执行证据驱动的�
 
 1. **Weakness Mining（弱点挖掘）**：在当前 harness 下跑一批任务，收集带可验证结果的执行轨迹；对失败轨迹聚类，产出结构化的失败模式证据（structured evidence），强调**模型特定**的复发模式。
 2. **Harness Proposal（harness 提案）**：以"proposer"角色调用**同一个模型**，基于失败证据生成一组**多样但最小**的候选 harness 修改，每个修改绑定一个具体失败机制，且不替换整体控制架构。
-3. **Proposal Validation（提案验证）**：候选修改在 held‑out 任务上做回归测试；**显式接受规则**——只有在提升目标失败模式且不引入不可接受回归时才晋升（promote）。多个通过的修改合并进下一版 harness，作为下一轮起点。
+3. **Proposal Validation（提案验证）**：候选修改在 held-out 任务上做回归测试；**显式接受规则**——只有在提升目标失败模式且不引入不可接受回归时才晋升（promote）。多个通过的修改合并进下一版 harness，作为下一轮起点。
 
 ### 3.2 可修改范围（RSI 视角）
 
@@ -89,33 +89,33 @@ Self‑Harness 自居**中间地带**：固定模型 + 由执行证据驱动的�
 
 ### 4.1 基准与模型
 
-- **基准**：Terminal‑Bench‑2.0（终端任务）、SWE‑bench Verified（软件工程）、AppWorld（应用操作）——三类异质环境。
-- **基座模型**（三个不同家族）：MiniMax M2.5、Qwen3.5‑35B‑A3B、GLM‑5。
+- **基准**：Terminal-Bench-2.0（终端任务）、SWE-bench Verified（软件工程）、AppWorld（应用操作）——三类异质环境。
+- **基座模型**（三个不同家族）：MiniMax M2.5、Qwen3.5-35B-A3B、GLM-5。
 - **初始 harness**：刻意采用**最小初始 harness**——留出自我改进空间，也避免"从强人工 harness 起步"的混淆。
 
 ### 4.2 评估协议
 
-- **held‑in / held‑out 双分割**：修改在 held‑in 上定向验证，在 held‑out 上做回归检查；最终报告两个集合的通过率。
+- **held-in / held-out 双分割**：修改在 held-in 上定向验证，在 held-out 上做回归检查；最终报告两个集合的通过率。
 - 九个 模型×基准 组合。
 
 ### 4.3 主结果
 
 （摘要 + GitHub 结果表）
 
-Terminal‑Bench‑2.0 held‑out 通过率：
+Terminal-Bench-2.0 held-out 通过率：
 
-| 模型 | 初始 harness | Self‑Harness 后 |
+| 模型 | 初始 harness | Self-Harness 后 |
 |---|---|---|
 | MiniMax M2.5 | 40.5%（GitHub 表记 42.2%） | **61.9%**（GitHub 表记 53.9%） |
-| Qwen3.5‑35B‑A3B | 23.8%（GitHub 表记 18.0%） | **38.1%**（GitHub 表记 36.7%） |
-| GLM‑5 | 42.9%（GitHub 表记 46.1%） | **57.1%**（GitHub 表记 57.0%） |
+| Qwen3.5-35B-A3B | 23.8%（GitHub 表记 18.0%） | **38.1%**（GitHub 表记 36.7%） |
+| GLM-5 | 42.9%（GitHub 表记 46.1%） | **57.1%**（GitHub 表记 57.0%） |
 
-（注：摘要与 GitHub 表的数字口径略有出入——前者为论文报告值，后者为代码库复现值；两组都显示大幅提升。论文总括：**全部九个组合 held‑in 与 held‑out 双升，整体相对增益最高 132%**。）
+（注：摘要与 GitHub 表的数字口径略有出入——前者为论文报告值，后者为代码库复现值；两组都显示大幅提升。论文总括：**全部九个组合 held-in 与 held-out 双升，整体相对增益最高 132%**。）
 
 ### 4.4 演化轨迹与保留修改（案例分析，§4.3 / Figure 6）
 
 - **Qwen3.5 运行**：20.3% → 36.7%；被接受并保留的 4 处修改分别针对：artifact 检查、缺失 artifact 恢复、重试纪律、工具错误触发的 middleware——主要提升从文件编辑/工具失败中恢复的能力。
-- **GLM‑5 运行**：46.1% → 57.0%；修改针对：晚期 artifact、外部计算、会话作用域工具、面向实现的探索——让环境变更跨 shell 命令持久化，并推动智能体从冗长探索转向实现与测试。
+- **GLM-5 运行**：46.1% → 57.0%；修改针对：晚期 artifact、外部计算、会话作用域工具、面向实现的探索——让环境变更跨 shell 命令持久化，并推动智能体从冗长探索转向实现与测试。
 
 ### 4.5 消融
 
@@ -127,13 +127,13 @@ Terminal‑Bench‑2.0 held‑out 通过率：
 
 ### Q1 内部判据：模型怎么判断"修改成立"？
 
-- **判断主体**：**显式接受规则（explicit acceptance rule）**——候选修改须通过 held‑out 回归测试：提升目标失败模式且无不可接受回归。
+- **判断主体**：**显式接受规则（explicit acceptance rule）**——候选修改须通过 held-out 回归测试：提升目标失败模式且无不可接受回归。
 - **反馈机制**：失败模式证据（聚类轨迹）驱动提案；回归结果驱动接受。
-- **性质**：**门控式（gated）**——这是与 DGM 式"档案锦标赛选择"的关键区别；Self‑Harness 是 SICA 式"效用门控"在 harness 层的对应物，但门控判据更软件工程化（回归测试）。
+- **性质**：**门控式（gated）**——这是与 DGM 式"档案锦标赛选择"的关键区别；Self-Harness 是 SICA 式"效用门控"在 harness 层的对应物，但门控判据更软件工程化（回归测试）。
 
 ### Q2 外部审计：怎么判断系统确实在改进？
 
-- **held‑out 分割**：修改的接受本身依赖 held‑out 回归，最终指标也在 held‑out 上报告——评估与搜索数据隔离做得比 SICA 干净。
+- **held-out 分割**：修改的接受本身依赖 held-out 回归，最终指标也在 held-out 上报告——评估与搜索数据隔离做得比 SICA 干净。
 - **多基准 × 多模型**：九组合全部正增益，降低"单一基准过拟合"嫌疑。
 - **初始 harness 最小化**：避免"起点已是强人工 harness"的归因混淆。
 
@@ -143,7 +143,7 @@ Terminal‑Bench‑2.0 held‑out 通过率：
 - **轨迹分析**：每轮通过率轨迹 + 保留修改清单。
 - **成本**：原文未在摘要/GitHub 中报告总成本（精读时标注：原文本所读部分未报告）。
 
-**评估三问总评**：Q1 的显式接受规则 + Q2 的 held‑out 回归是本方法最坚实的部分；Q3 的代码级 diff 编目为"改动到底改了什么"提供了罕见的可见性。主要缺口是成本审计与多次独立运行的方差。
+**评估三问总评**：Q1 的显式接受规则 + Q2 的 held-out 回归是本方法最坚实的部分；Q3 的代码级 diff 编目为"改动到底改了什么"提供了罕见的可见性。主要缺口是成本审计与多次独立运行的方差。
 
 ---
 
@@ -151,7 +151,7 @@ Terminal‑Bench‑2.0 held‑out 通过率：
 
 - **主结果**：三模型、三基准全部提升；相对增益最高 132%。
 - **修改的"形状"**：被接受的修改数量很少（如 Qwen3.5 运行仅 4 处保留），但每处都绑定明确失败机制——印证"minimal edit"原则。
-- **模型特定性证据**：不同模型获得的修改内容不同（Qwen3.5 偏向失败恢复，GLM‑5 偏向持久化与探索‑实现平衡）——直接支持"harness 是模型特定的"这一出发点。
+- **模型特定性证据**：不同模型获得的修改内容不同（Qwen3.5 偏向失败恢复，GLM-5 偏向持久化与探索-实现平衡）——直接支持"harness 是模型特定的"这一出发点。
 - **失败模式**：原文所读部分未系统报告失败案例；社区复现讨论指出"评估循环循环性（同一模型既改又判）"与"对评估器偏差过拟合"是主要风险点。
 
 ---
