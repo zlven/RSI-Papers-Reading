@@ -7,9 +7,9 @@
 每篇都是**独立精读**：判断只基于该论文自身文本，不做预设的跨文对比。
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Docs](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB-GitHub%20Pages-4f46e5)](https://YOUR-USERNAME.github.io/RSI-Papers-Reading/)
+[![Docs](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB-GitHub%20Pages-4f46e5)](https://zlven.github.io/RSI-Papers-Reading/)
 
-> **在线浏览**：<https://YOUR-USERNAME.github.io/RSI-Papers-Reading/>
+> **在线浏览**：<https://zlven.github.io/RSI-Papers-Reading/>
 > （带左侧分类导航、中文全文检索、深色模式；也可直接点开 `docs/` 下的 Markdown 文件阅读。）
 
 ---
@@ -78,6 +78,17 @@
 pip install -r requirements.txt
 mkdocs serve          # 打开 http://127.0.0.1:8000
 ```
+
+## 部署说明（只需做一次）
+
+首次启用 GitHub Pages 时，必须把 **Settings → Pages → Build and deployment → Source**
+设为 **「GitHub Actions」**。
+
+若保留默认的「Deploy from a branch」，GitHub 会用 **Jekyll** 构建分支内容对外发布，
+而该构建会在每次 push 时与本站的 Actions 发布**竞争并最终覆盖它**：访客看到的是 README
+的 Jekyll 渲染版，`/docs/*.html` 被原样暴露，而侧边栏导航、中文全文检索、深色模式
+**全部失效**（`references/`、`search/search_index.json` 均 404）。此时 Actions 工作流
+仍显示全绿，故障只体现在这个 Source 设置上。
 
 ## 新增一篇精读
 

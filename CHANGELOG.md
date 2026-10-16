@@ -26,6 +26,22 @@
 
 以下问题由 `scripts/check_notes.py` 自动检出，需人工补齐（脚本不会代为推断内容）。
 
+### 0. 【阻塞】Pages 的 Source 仍是「Deploy from a branch」
+
+线上站点目前是 **GitHub 用 Jekyll 构建分支目录**的产物，不是本仓库 MkDocs 站的产物：
+首页是 README 的 Jekyll 渲染版，`/docs/*.html` 与 `/docs/*.md` 可被直接访问，而
+`references/`、`search/search_index.json`、`sitemap.xml` 均返回 404 ——
+侧边栏导航、中文全文检索、深色模式**全部失效**。
+
+定位依据：内置工作流 `pages build and deployment` 的构建步骤为
+`Build with Jekyll` + `Deploy to GitHub Pages`，且它的部署记录（`02:56:42`）
+晚于本仓库工作流的部署（`02:56:25`）17 秒，因而覆盖了后者。**两条工作流都是 success**，
+故障只出在 Pages 的 Source 设置上。
+
+- [ ] Settings → Pages → Build and deployment → Source 改为 **「GitHub Actions」**
+- [ ] 改完后重跑工作流：Actions → 构建并发布文档站 → Run workflow
+- [ ] 复核：`https://zlven.github.io/RSI-Papers-Reading/references/` 返回 200
+
 ### 1. 缺少 arXiv 编号（5 篇）
 
 脚本不猜测编号，请确认后补入对应笔记头部的元信息块：
