@@ -1,4 +1,4 @@
-# Co‑Harness 精读：Co‑Evolving Harnesses and Model Weights for LLM Agents
+# Co-Harness 精读：Co-Evolving Harnesses and Model Weights for LLM Agents
 
 > **论文信息**：Zhengyu Chen, Teng Xiao, Huaisheng Zhu, Yige Yuan, Luan Zhang, Jingang Wang；arXiv:2607.22688（2026-07）
 > **精读日期**：2026-10-15 ｜ **阅读方式**：arXiv HTML v1（方法/实验/局限章节）
@@ -9,8 +9,8 @@
 
 | 项目 | 内容 |
 |---|---|
-| **一句话概括** | 提出 Co‑Harness：首个把 **harness（脚手架）与模型权重作为两个互相依赖的优化轴**进行双循环共进化的智能体后训练框架——"更好的 harness → 更干净的轨迹 → 更强的模型 → 能驾驭更丰富的 harness"；在 AIME24/25 与 HMMT25 上两轮共进化平均提升 +20.4pp，并超过人工设计 harness 达 +24.7pp |
-| **所属领域** | 智能体后训练 × harness‑权重共进化 × 工具集成数学推理 |
+| **一句话概括** | 提出 Co-Harness：首个把 **harness（脚手架）与模型权重作为两个互相依赖的优化轴**进行双循环共进化的智能体后训练框架——"更好的 harness → 更干净的轨迹 → 更强的模型 → 能驾驭更丰富的 harness"；在 AIME24/25 与 HMMT25 上两轮共进化平均提升 +20.4pp，并超过人工设计 harness 达 +24.7pp |
+| **所属领域** | 智能体后训练 × harness-权重共进化 × 工具集成数学推理 |
 | **RSI 分级** | **L5（权重 + 脚手架联合递归）**——同一闭环中交替修改 harness 与模型权重；两个改进通道互相喂养，但每侧的改进规则（HarnessCritic 归因、SFT 配方、验证门）仍由人设定 |
 | **核心贡献标签** | 联合优化问题形式化（模型 × harness）；HarnessCritic 失败归因（prompt 歧义/工具 schema 错误/技能缺失/中间件失配）；双循环交替配方；+20.4pp 复合增益；200+ 小时自主运行案例（自修复崩溃、提效、发现 ensemble 策略） |
 
@@ -18,9 +18,9 @@
 
 ## 1. 研究背景与动机
 
-**领域位置**：智能体后训练（post‑training）。现有范式在两个极端之间二选一：
+**领域位置**：智能体后训练（post-training）。现有范式在两个极端之间二选一：
 
-- **冻结 harness、训模型**：SWE‑smith、AgentTuning 等——把脚手架当作固定的数据生成环境；
+- **冻结 harness、训模型**：SWE-smith、AgentTuning 等——把脚手架当作固定的数据生成环境；
 - **冻结模型、搜 harness**：ADAS、OPRO 等——把模型当作固定的执行器。
 
 **核心洞察**（论文贡献第一条的核心陈述）：脚手架与模型**不是独立的，而是互相依赖的两个优化轴**。harness 的质量决定轨迹的质量，轨迹的质量决定训练后模型的能力，而更强的模型又能利用更丰富的 harness——三者构成复合（compounding）增益链条。
@@ -42,7 +42,7 @@
    Better harness → better trajectories → stronger model → better harness → …
 2. **失败归因先于修改**：HarnessCritic 把每条失败轨迹归因到**结构化的 harness 层原因**（提示歧义、工具 schema 错误、技能缺失、中间件失配），修改由此有的放矢，而非盲目扰动。
 3. **harness 修复先行、权重内化随后**：先在推理时修好脚手架，再用干净轨迹做 SFT 把行为**内化**为模型能力——"each successful Harness revision can become persistent model capability"（Model Alignment Loop 的动机陈述）。
-4. **验证门控的局部 diff**：harness 修改以局部 diff 形式提出，仅在"目标失败模式改善且 held‑out 行为不回归"时被接受。
+4. **验证门控的局部 diff**：harness 修改以局部 diff 形式提出，仅在"目标失败模式改善且 held-out 行为不回归"时被接受。
 
 ### 2.2 理论依据与方法论谱系
 
@@ -52,9 +52,9 @@
 
 ### 2.3 与已有工作的联系（按论文自身定位）
 
-- **vs ADAS / OPRO**：它们冻结模型；Co‑Harness 双轴。
-- **vs SWE‑smith / AgentTuning**：它们冻结 harness；Co‑Harness 双轴。
-- 论文自称"**the first framework to co‑evolve both**"（贡献陈述原文），把 2026 年涌现的 harness 优化与权重训练两条线合并为一个闭环。
+- **vs ADAS / OPRO**：它们冻结模型；Co-Harness 双轴。
+- **vs SWE-smith / AgentTuning**：它们冻结 harness；Co-Harness 双轴。
+- 论文自称"**the first framework to co-evolve both**"（贡献陈述原文），把 2026 年涌现的 harness 优化与权重训练两条线合并为一个闭环。
 
 ---
 
@@ -65,11 +65,11 @@
 每轮 t，从 (θ_t, φ_t) 出发：
 
 1. **轨迹收集**：当前模型在当前 harness 下跑任务集。
-2. **Co‑Harness Loop（固定 θ_t，改进 φ）**：
+2. **Co-Harness Loop（固定 θ_t，改进 φ）**：
    - 失败轨迹送入 LLM 版 **HarnessCritic**；
    - Critic 将失败归因到结构化 harness 层原因（prompt 歧义 / 工具 schema 错 / 技能缺失 / middleware 失配）；
    - 提出局部 harness diff；
-   - **接受判据**：验证 rollouts 显示目标失败模式改善且 held‑out 行为不回归；
+   - **接受判据**：验证 rollouts 显示目标失败模式改善且 held-out 行为不回归；
    - 产出进化后的 φ_t*。
 3. **Model Alignment Loop（固定 φ_t*，改进 θ）**：
    - 在 φ_t* 下重新收集高质量轨迹集 D_t；
@@ -104,13 +104,13 @@
 ### 4.1 任务与模型
 
 - **基准**：AIME24、AIME25、HMMT25——工具集成数学推理，难度递增（HMMT25 最难）。
-- **模型**：Qwen3‑8B 与 Qwen3‑32B 两个尺度。
+- **模型**：Qwen3-8B 与 Qwen3-32B 两个尺度。
 - **轮数**：两轮完整共进化（Round 1 / Round 2）。
 
 ### 4.2 Baseline
 
 - **Baseline**：初始模型 + 初始 harness；
-- **Human‑designed static Harness**：人工精调的固定 harness（关键对照——检验自动共进化是否超越人工天花板）。
+- **Human-designed static Harness**：人工精调的固定 harness（关键对照——检验自动共进化是否超越人工天花板）。
 
 ### 4.3 主结果
 
@@ -121,7 +121,7 @@
 | Baseline | 58.5% | — |
 | Round 1 | 73.5% | **+15.0 pp** |
 | Round 2 | 78.9% | **+20.4 pp（累计）** |
-| Human‑designed Harness | — | R2 超出其 **+24.7 pp** |
+| Human-designed Harness | — | R2 超出其 **+24.7 pp** |
 
 **难度交互**：
 - HMMT25（最难）：+20.1 pp（8B）、**+27.2 pp**（32B）——越难受益越大，印证"脚手架缺陷在复杂多步任务中更致命"；
@@ -145,7 +145,7 @@
 
 ### Q1 内部判据：怎么判断"修改成立"？
 
-- **harness 侧**：门控式——HarnessCritic 归因 + 验证 rollouts（目标失败模式改善 + held‑out 不回归）双重判据；
+- **harness 侧**：门控式——HarnessCritic 归因 + 验证 rollouts（目标失败模式改善 + held-out 不回归）双重判据；
 - **权重侧**：隐式——SFT 不做显式接受判断，依赖轨迹质量由上游 harness 门控保证；
 - **性质**：**门控式（harness）+ 继承式（权重）**的复合判据结构。
 
@@ -193,16 +193,16 @@
 
 ## 8. 未来方向（基于原文 Limitations/Future Work）
 
-1. **Online Co‑Harness**：rollout 期间实时归因，长程任务的 run 内 harness 适应；
+1. **Online Co-Harness**：rollout 期间实时归因，长程任务的 run 内 harness 适应；
 2. **RL 版 harness 进化**：用奖励信号搜索替代 LLM critic，可能发现非显然配置；
-3. **多智能体 Co‑Harness**：智能体间 middleware 层成为关键优化目标；
+3. **多智能体 Co-Harness**：智能体间 middleware 层成为关键优化目标；
 4. （论文愿景）从周期性批处理走向"与模型共同演化的持续在线脚手架健康监控器"。
 
 ---
 
 ## 9. 批判性问题清单（精读者视角）
 
-1. **Critic 能力的循环依赖**：改进质量上限 = critic 的归因能力；用一个比被改进模型更强的 critic，是否变相引入了"外部强模型"（与 Self‑Harness 刻意回避的设定相反）？论文未做 critic 强度消融（所读部分）。
+1. **Critic 能力的循环依赖**：改进质量上限 = critic 的归因能力；用一个比被改进模型更强的 critic，是否变相引入了"外部强模型"（与 Self-Harness 刻意回避的设定相反）？论文未做 critic 强度消融（所读部分）。
 2. **竞赛数学的窄域性**：AIME/HMMT 是可自动判分的干净环境；在软件工程、网页操作等噪声大的域，"目标失败模式改善"的验证成本会爆炸——方法的可移植性未证。
 3. **SFT 内化的黑箱性**：权重侧没有任何归因机制；"更好的轨迹"中哪些成分真正被内化、哪些被丢弃，完全不可见。
 4. **两轮即报告**：共进化承诺的是飞轮，但实验止于 Round 2；第 3–5 轮是否饱和、振荡或退化（harness 与模型互相过拟合）是关键未答问题。

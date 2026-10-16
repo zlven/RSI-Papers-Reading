@@ -2,7 +2,7 @@
 
 > 面向 **递归自我改进（Recursive Self-Improvement, RSI）** 的论文精读笔记。所有判断只基于各论文自身文本，不做预设的跨文对比。
 
-> **系列规模**：49 篇精读（主线 18 + 综述 3 + 其他路线 8 + 零数据自博弈 7 + 进化搜索 6 + 经验与上下文 4 + 自动化科研 3）。
+> **系列规模**：53 篇精读（主线 22 + 综述 3 + 其他路线 8 + 零数据自博弈 7 + 进化搜索 6 + 经验与上下文 4 + 自动化科研 3）。
 > **阅读方式**：每篇均为**单独精读**——所有判断只基于该论文自身文本，不做预设的跨文对比；跨文关联仅在该论文自己定位前人工作时、或在结构性分析中明确标注时出现。
 > **统一模板**：每篇均按《RSI 论文精读 Prompt 模板 v1.0》的 0–9 节展开（速览卡片 / 背景动机 / Insight 与理论依据 / 方法详解（含可修改范围表 + RSI 分级）/ 实验设计 / **评估三问** / 结果分析 / 结论意义 / 未来方向 / 批判性问题清单）。模板文件未收录进本仓库。
 
@@ -26,12 +26,12 @@
 | **L1- / L1+** | L1 变体：记忆/上下文级持久化（-）；判据参与共进化（+） | Reflexion、Voyager、ACE（-）；Self-Rewarding（+） |
 | **L1.5** | 课程自产：连"学什么"都由系统内生 | Absolute Zero、R-Zero、SPICE |
 | **L2** | 改进者可被替换/改写，但改进规则固定 | SICA、Self-Harness、AIDE² |
-| **L3** | 完全自指：改写逻辑自身也在可改写范围内 | Gödel Agent、HSI |
+| **L3** | 完全自指：改写逻辑自身也在可改写范围内 | Gödel Agent、HSI、MetaSkill-Evolve、HyperAgents |
 | **L4 / L5** | 评估器可改写（L4+）；权重×脚手架联合递归（L5）；理论上限（L5+） | RQGM；Co-Harness；Gödel Machine |
 
 ---
 
-## 01 · 主线：哥德尔式 RSI 与自我改进智能体（18 篇）
+## 01 · 主线：哥德尔式 RSI 与自我改进智能体（22 篇）
 
 | # | 文件 | 分级 | 一句话核心 |
 |---|---|---|---|
@@ -53,6 +53,10 @@
 | 16 | [DemoEvolve](01-主线-16-DemoEvolve-精读.md) | L1+ | 首次系统暴露稀疏奖励下 harness 进化的噪声选择失败（"hook 从未触发"）；人类示范作参照经验 |
 | 17 | [Red Queen Gödel Machine](01-主线-17-Red%20Queen%20Gödel%20Machine-精读.md) | L4+ | 首次把评估器 U 纳入可进化范围：{π, m, U} 三者皆可进化——"锚定 RSI"→"漂移 RSI"的范式跨越 |
 | 18 | [Hierarchical Self-Improvement](01-主线-18-Hierarchical%20Self-Improvement-精读.md) | L3 | 单一冻结 LLM 三层作用域（harness/evolver/meta-evolver 均可改）；BALROG 持续提升 + 两条明确边界 |
+| 19 | [MetaSkill-Evolve](01-主线-19-MetaSkill-Evolve-精读.md) | L3（有界一层递归） | 改进过程参数化为五份 Markdown 元技能，被**同一条**五智能体流水线做双时间尺度进化；ALFWorld 全部增益来自慢环——递归层价值的罕见定量证据 |
+| 20 | [HyperAgents (DGM-H)](01-主线-20-HyperAgents-精读.md) | L3 | 任务/元智能体融合为**单一可编辑程序**，元认知自我修改；跨域迁移 imp@50=0.630 vs DGM-custom≈0；第 3 代涌现持久记忆/性能追踪 |
+| 21 | [Mendel Gödel Machine](01-主线-21-Mendel-Gödel-Machine-精读.md) | L2.5 | 比较进化：反应规范变异（跨任务取证）+ 跨谱系杂交（同任务对照），**零额外评测**；加性景观收敛定理；Polyglot 50.8→93.2% |
+| 22 | [RSI-Anything](01-主线-22-RSI-Anything-精读.md) | L4- | 改进单元升格为"**策略—世界模型配对**"；预测替代昂贵反馈 + 可靠性触发适配 + 配对级兼容性门控；五域验证（湿实验规划连续五代 21.80→46.01%，同预算化学优化 96.15% vs 贝叶斯 82.16%） |
 
 ## 02 · 综述与立场（3 篇）
 
@@ -122,8 +126,9 @@
 ## 推荐阅读路径
 
 1. **先立框架**：`02-综述-01`（验证层级）→ `01-主线-01`（Gödel Machine 理论锚点）
-2. **主线纵贯**：STOP → Gödel Agent → SICA → DGM → HGM（自我修改实证谱系）→ Self-Harness → Co-Harness（harness 线）→ RQGM（判据漂移前沿）
+2. **主线纵贯**：STOP → Gödel Agent → SICA → DGM → MGM（自我修改实证谱系）→ HGM → HyperAgents（元层可编辑）→ MetaSkill-Evolve（递归一层的有界形态）→ Self-Harness → Co-Harness（harness 线）→ RQGM（判据漂移前沿）
 3. **对照阅读**：
+   - **L3 内部三形态**（2026 新增）：Gödel Agent（无门控单点贪心）↔ HyperAgents（档案门控 + 元机制可编辑 + 外环冻结）↔ MetaSkill-Evolve（同构表示 + 双时间尺度有界递归）——同样触及"改写逻辑可改写"，门控严格度与递归形态完全不同
    - 判据来源光谱：R-Zero ↔ Socratic-Zero ↔ SPICE
    - 持久化载体光谱：Reflexion（记忆）→ Voyager（代码技能）→ ACE（策略条目）→ EvolveR（原则+权重）
    - 门控严格度光谱：Gödel Agent（无门控）→ DGM（基准门控）→ AIDE²（隐藏数据+固定预算+held-out 泛化）

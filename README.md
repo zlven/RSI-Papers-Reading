@@ -18,14 +18,14 @@
 
 | 分类 | 篇数 | 主题 |
 |---|---:|---|
-| **01 · 主线** | 18 | 哥德尔式 RSI 与自我改进智能体：Gödel Machine → STOP → Gödel Agent → SICA → DGM → HGM → Self-/Co-Harness → RQGM |
+| **01 · 主线** | 19 | 哥德尔式 RSI 与自我改进智能体：Gödel Machine → STOP → Gödel Agent → SICA → DGM → HGM → Self-/Co-Harness → RQGM → RSI-Anything |
 | **02 · 综述与立场** | 3 | 领域综述与前沿实验室的立场报告 |
 | **03 · 其他路线** | 8 | 权重自编辑与经典自举：SEAL、Transformer²、STaR、ReST-EM、Self-Refine、Reflexion、SPIN |
 | **04 · 零数据自博弈** | 7 | 无人类数据时判据从何而来：Absolute Zero、R-Zero、Socratic-Zero、SPICE |
 | **05 · 进化搜索** | 6 | FunSearch、AlphaEvolve、ShinkaEvolve、ThetaEvolve、EvoGit |
 | **06 · 经验与上下文** | 4 | 经验资产化的载体谱系：Voyager、ACE、EvolveR、AFlow |
 | **07 · 自动化科研** | 3 | AI Scientist v1/v2、AIDE² |
-| **合计** | **49** | 完整清单见 [`docs/references.md`](docs/references.md) |
+| **合计** | **50** | 完整清单见 [`docs/references.md`](docs/references.md) |
 
 ## 分析框架
 
@@ -61,7 +61,7 @@
 │   ├── index.md               # 总索引：分级图例 + 评估三问 + 推荐阅读路径
 │   ├── references.md          # 参考文献清单（由脚本从笔记自动抽取生成）
 │   ├── 01-主线-01-Gödel Machine理论源头-精读.md
-│   └── …                      # 共 49 篇精读
+│   └── …                      # 共 50 篇精读
 ├── scripts/                   # 笔记维护脚本
 │   ├── gen_nav.py             # 依文件名重生成 mkdocs.yml 的侧边栏导航
 │   ├── extract_refs.py        # 抽取论文元数据，生成 docs/references.md

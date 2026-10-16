@@ -1,6 +1,6 @@
 # 精读：FunSearch —— Mathematical Discoveries from Program Search with Large Language Models
 
-> 论文：Romera-Paredes, Barekatain, Novikov et al. (DeepMind). "Mathematical discoveries from program search with large language models". Nature 2024（2023 年 12 月发布）。
+> 论文：Romera-Paredes, Barekatain, Novikov et al. (DeepMind). "Mathematical discoveries from program search with large language models". Nature 625, 468-475（2024；2023 年 12 月在线发布）。本文无 arXiv 预印本，正式版仅有 Nature 正刊。
 > 阅读方式：单独精读。所有判断只基于本文自身文本。
 
 ---

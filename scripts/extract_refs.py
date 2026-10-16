@@ -51,6 +51,20 @@ VENUES = (
     "Springer",
 )
 YEAR_RE = re.compile(r"(?:19|20)\d{2}")
+# arXiv 编号自带 4 位数字串（2505.20347 → "2034"、2509.19349 → "1934"、
+# 2506.02049 → "2049"），会被 YEAR_RE 误当成年份。检索年份前必须先摘掉编号，
+# 否则「预印本 2034」这类错误年份会随每次重新生成复发。
+ARXIV_ANY = re.compile(
+    r"arXiv[:\s]*\d{4}\.\d{4,5}|arXiv[:\s]*[a-z-]+(?:\.[A-Z]{2})?/\d{7}"
+)
+# 笔记里已显式声明"非 arXiv 文献"的条目不计入缺编号清单
+# （HALO 是开源项目、Anthropic 是立场报告、FunSearch 只有 Nature 版无预印本）。
+NON_ARXIV_RE = re.compile(r"非\s*arXiv|无\s*arXiv")
+
+
+def strip_arxiv(text: str) -> str:
+    """摘掉 arXiv 编号，避免编号内的数字串被年份正则误匹配。"""
+    return ARXIV_ANY.sub(" ", text)
 
 CATEGORY_TITLES = {
     "01": "01 · 主线：哥德尔式 RSI 与自我改进智能体",
@@ -71,7 +85,7 @@ OVERRIDES: dict[str, dict[str, str]] = {
         "venue": "IDSIA 技术报告 2003 / Springer《Artificial General Intelligence》2007",
     },
     # 以下几篇 H1 的「精读：」之后是中文副标题而非英文全称，改用笔记自带的简称
-    "01-主线-08-Live-SWE-agent-精读.md": {"title": "Live‑SWE‑agent"},
+    "01-主线-08-Live-SWE-agent-精读.md": {"title": "Live-SWE-agent"},
     "01-主线-16-DemoEvolve-精读.md": {"title": "DemoEvolve"},
     "01-主线-17-Red Queen Gödel Machine-精读.md": {
         "title": "Red Queen Gödel Machine（智能体与其评估器的共同进化）"
@@ -83,6 +97,11 @@ OVERRIDES: dict[str, dict[str, str]] = {
     "02-综述-03-Anthropic-When AI Builds Itself-精读.md": {
         "venue": "Anthropic Institute 立场报告",
         "link": "—（非 arXiv 文献）",
+    },
+    # FunSearch 只有 Nature 正刊版本，未发 arXiv 预印本
+    "05-进化搜索-01-FunSearch-精读.md": {
+        "venue": "Nature 625, 468-475（2024）",
+        "link": "[Nature](https://www.nature.com/articles/s41586-023-06924-6)",
     },
 }
 
@@ -158,17 +177,19 @@ def extract_venue(lines: list[str], head: str) -> str:
         if m:
             return m.group(1).strip()
 
+    # 年份只在"摘掉 arXiv 编号后"的文本上检索，否则会把编号里的数字串当成年份
+    clean = strip_arxiv(head)
     for venue in dict.fromkeys(VENUES):
-        idx = head.find(venue)
+        idx = clean.find(venue)
         if idx < 0:
             continue
         # 取该会议名之后最近的年份，避免误取到更早出现的其他年份
-        m = YEAR_RE.search(head, idx, idx + 40)
+        m = YEAR_RE.search(clean, idx, idx + 40)
         if not m:
-            m = YEAR_RE.search(head)
+            m = YEAR_RE.search(clean)
         return f"{venue} {m.group(0)}".strip() if m else venue
 
-    m = YEAR_RE.search(head)
+    m = YEAR_RE.search(clean)
     if m:
         return f"预印本 {m.group(0)}"
     return "见笔记元信息"
@@ -184,6 +205,7 @@ def extract(path: pathlib.Path) -> dict[str, str]:
         "authors": extract_authors(lines, head),
         "venue": extract_venue(lines, head),
         "arxiv": arxiv or "",
+        "non_arxiv": bool(NON_ARXIV_RE.search(head)),
         "link": f"[arXiv:{arxiv}](https://arxiv.org/abs/{arxiv})" if arxiv else "**待补**",
     }
     info.update(OVERRIDES.get(path.name, {}))
@@ -201,7 +223,7 @@ def main() -> int:
             continue
         info = extract(path)
         groups.setdefault(m.group(1), []).append((int(m.group(3)), path.name, info))
-        if not info["arxiv"]:
+        if not info["arxiv"] and not info["non_arxiv"]:
             missing.append(path.name)
 
     for items in groups.values():
@@ -214,7 +236,8 @@ def main() -> int:
         "> 本清单由仓库根目录的 `scripts/extract_refs.py` 从各篇精读头部的「论文信息」块"
         "自动抽取生成，运行该脚本即可刷新。",
         "> 脚本只转录笔记中已写明的内容，**不猜测 arXiv 编号**；"
-        "标注「待补」的条目表示原笔记未写明编号。",
+        "标注「待补」的条目表示原笔记未写明编号（笔记头部已声明「非 arXiv 文献」"
+        "的条目不在此列，如 HALO 是开源项目、Anthropic 是立场报告、FunSearch 只有 Nature 版）。",
         "",
         f"共 {total} 篇文献。",
         "",

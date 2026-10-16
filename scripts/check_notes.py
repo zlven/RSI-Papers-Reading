@@ -8,6 +8,8 @@
 2. **模板完整性**——每篇应含 `## 0.` 到 `## 9.` 共 10 个小节（模板 v1.0）。
 3. **站内链接可解析**——相对 Markdown 链接必须指向 docs/ 下真实存在的文件。
 4. **arXiv 号缺失**——头部未写明编号的篇目，供人工补充；脚本不猜。
+   笔记头部已声明「非 arXiv 文献」的条目不列入（如 HALO 是开源项目、
+   Anthropic 是立场报告、FunSearch 只有 Nature 版无预印本）。
 5. **非标准连字符**——`U+2011`、`U+2010` 等外形与 ASCII `-` 相同但码位不同的字符，
    会导致读者用常规键盘搜不到内容（如输入 `Self-Harness` 搜不到 `Self‑Harness`）。
 
@@ -44,6 +46,8 @@ DOCS = ROOT / "docs"
 SECTION_RE = re.compile(r"^##\s+(\d)\.\s", re.MULTILINE)
 ARXIV_NEW = re.compile(r"arXiv[:\s]*(\d{4}\.\d{4,5})")           # 2402.04319
 ARXIV_OLD = re.compile(r"arXiv[:\s]*([a-z-]+(?:\.[A-Z]{2})?/\d{7})")  # cs/0309048
+# 头部声明「非 arXiv 文献」的条目不缺编号，与 extract_refs.py 的判定保持一致
+NON_ARXIV_RE = re.compile(r"非\s*arXiv|无\s*arXiv")
 MD_LINK = re.compile(r"(?<!\!)\[([^\]]+)\]\(([^)#\s]+)(?:#[^)]*)?\)")
 
 EXPECTED_SECTIONS = set(range(10))  # 注意是 int，需与 int(n) 同型才能求差集
@@ -89,7 +93,7 @@ def check_sections(files: list[pathlib.Path]) -> tuple[list[str], list[str]]:
                 f"[模板] {rel(path)} 缺少小节：{', '.join('## ' + str(n) + '.' for n in missing)}"
             )
         head = "\n".join(text.split("\n")[:25])
-        if not (ARXIV_NEW.search(head) or ARXIV_OLD.search(head)):
+        if not (ARXIV_NEW.search(head) or ARXIV_OLD.search(head)) and not NON_ARXIV_RE.search(head):
             no_arxiv.append(rel(path))
     return problems, no_arxiv
 

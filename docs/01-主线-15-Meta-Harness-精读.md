@@ -1,4 +1,4 @@
-# Meta‑Harness 精读：End‑to‑End Optimization of Model Harnesses
+# Meta-Harness 精读：End-to-End Optimization of Model Harnesses
 
 > **论文信息**：Yoonho Lee, Roshen Nair, Qizheng Zhang, Kangwook Lee, Omar Khattab, Chelsea Finn（Stanford 等）；arXiv:2603.28052（2026-03）
 > **精读日期**：2026-10-15 ｜ **阅读方式**：arXiv 摘要
@@ -9,10 +9,10 @@
 
 | 项目 | 内容 |
 |---|---|
-| **一句话概括** | 提出 Meta‑Harness：一个在 **harness 代码空间**上做外循环搜索的系统——其"智能体式提案器"（agentic proposer）通过文件系统访问全部历史候选的**源代码、分数与执行轨迹**，不被压缩反馈束缚；在在线文本分类上超 SOTA 上下文管理系统 7.7 分且上下文 token 省 4 倍；在检索增强数学推理上，单一发现的 harness 让 5 个 held‑out 模型在 200 道 IMO 级题目上平均 +4.7 分；在编程任务（TerminalBench‑2）上超过最佳人工基线 |
+| **一句话概括** | 提出 Meta-Harness：一个在 **harness 代码空间**上做外循环搜索的系统——其"智能体式提案器"（agentic proposer）通过文件系统访问全部历史候选的**源代码、分数与执行轨迹**，不被压缩反馈束缚；在在线文本分类上超 SOTA 上下文管理系统 7.7 分且上下文 token 省 4 倍；在检索增强数学推理上，单一发现的 harness 让 5 个 held-out 模型在 200 道 IMO 级题目上平均 +4.7 分；在编程任务（TerminalBench-2）上超过最佳人工基线 |
 | **所属领域** | harness 自动优化 × 智能体式外循环搜索 × 上下文管理 |
 | **RSI 分级** | **L1+（外循环优化器，"自我"含量依部署而定）**——提案器是独立智能体而非被优化系统自身；当被优化 harness 包裹的模型与提案器同源时接近 L2，但论文框架本身是"优化任意 LLM 应用的 harness" |
-| **核心贡献标签** | "文本优化器压缩反馈过猛"的问题诊断；全历史经验访问（代码+分数+轨迹）的提案器设计；三个异质任务域的一致提升；harness 的跨模型迁移（5 个 held‑out 模型） |
+| **核心贡献标签** | "文本优化器压缩反馈过猛"的问题诊断；全历史经验访问（代码+分数+轨迹）的提案器设计；三个异质任务域的一致提升；harness 的跨模型迁移（5 个 held-out 模型） |
 
 ---
 
@@ -34,18 +34,18 @@
 
 1. **反馈丰富性是瓶颈**：优化质量的上限被"提案器能看到什么"决定——给它文件系统级的全量访问，而非几句摘要；
 2. **harness 即代码，搜索即编程**：搜索空间是 harness 源代码本身，提案器像软件工程师一样读旧代码、看运行轨迹、写新版本；
-3. **发现的 harness 可以跨模型迁移**：单一 harness 提升 5 个 held‑out 模型——harness 编码的是任务结构知识，不只适配某个模型。
+3. **发现的 harness 可以跨模型迁移**：单一 harness 提升 5 个 held-out 模型——harness 编码的是任务结构知识，不只适配某个模型。
 
 ### 2.2 理论依据与方法论谱系
 
 - 无形式理论；方法论是**智能体式搜索**（agentic search）：把 ADAS 的"元智能体编程"思想推向"全历史透明"的极致；
-- 与 DSPy（Khattab 为共同作者）的关系：DSPy 编译声明式 pipeline，Meta‑Harness 搜索任意 harness 代码——表达空间更大；
-- 与 AHE 的"经验可观测性"支柱同构（都反对压缩反馈），但实现路径不同：AHE 蒸馏证据语料，Meta‑Harness 直接给文件系统。
+- 与 DSPy（Khattab 为共同作者）的关系：DSPy 编译声明式 pipeline，Meta-Harness 搜索任意 harness 代码——表达空间更大；
+- 与 AHE 的"经验可观测性"支柱同构（都反对压缩反馈），但实现路径不同：AHE 蒸馏证据语料，Meta-Harness 直接给文件系统。
 
 ### 2.3 与已有工作的联系
 
-- 对照基线含 SOTA 上下文管理系统（文本分类任务）与人工工程 harness（TerminalBench‑2）；
-- 后续影响：成为 WHALE（联合 harness‑权重优化）中的 "Meta‑Harness search" 组件，被 DemoEvolve 用作自演化（self‑rollout）条件的实现。
+- 对照基线含 SOTA 上下文管理系统（文本分类任务）与人工工程 harness（TerminalBench-2）；
+- 后续影响：成为 WHALE（联合 harness-权重优化）中的 "Meta-Harness search" 组件，被 DemoEvolve 用作自演化（self-rollout）条件的实现。
 
 ---
 
@@ -83,12 +83,12 @@
 | 任务域 | 结果 |
 |---|---|
 | 在线文本分类 | 超 SOTA 上下文管理系统 **+7.7 分**，且上下文 token **省 4×** |
-| 检索增强数学推理（200 道 IMO 级题） | 单一发现的 harness 使 **5 个 held‑out 模型**平均 **+4.7 分** |
-| 编程（TerminalBench‑2） | 发现的 harness **超过最佳人工工程基线** |
+| 检索增强数学推理（200 道 IMO 级题） | 单一发现的 harness 使 **5 个 held-out 模型**平均 **+4.7 分** |
+| 编程（TerminalBench-2） | 发现的 harness **超过最佳人工工程基线** |
 
 ### 4.2 评估要点
 
-- **跨模型迁移**：数学任务上刻意用 held‑out 模型检验 harness 的模型无关性；
+- **跨模型迁移**：数学任务上刻意用 held-out 模型检验 harness 的模型无关性；
 - **效率**：token 节省作为并列指标（不只刷分）。
 
 ---
@@ -102,16 +102,16 @@
 
 ### Q2 外部审计
 
-- **held‑out 模型迁移**（数学任务，5 模型）——罕见的审计维度；
-- 人工基线对照（TerminalBench‑2）；
-- 缺口（摘要级）：held‑out 任务分割未见明示；后续 DemoEvolve 的审计揭示：把 Meta‑Harness 用于**长程稀疏反馈**任务时，会出现"选中的候选 hook 从未触发、表观增益来自噪声"的失败模式——即其评估协议在方差大的环境下可被噪声劫持。
+- **held-out 模型迁移**（数学任务，5 模型）——罕见的审计维度；
+- 人工基线对照（TerminalBench-2）；
+- 缺口（摘要级）：held-out 任务分割未见明示；后续 DemoEvolve 的审计揭示：把 Meta-Harness 用于**长程稀疏反馈**任务时，会出现"选中的候选 hook 从未触发、表观增益来自噪声"的失败模式——即其评估协议在方差大的环境下可被噪声劫持。
 
 ### Q3 量化方式
 
 - 候选级：代码 diff + 分数 + 轨迹三元组（档案原生支持编目）；
 - 分数与 token 双指标。
 
-**评估三问总评**：Meta‑Harness 的核心贡献在 Q1 的"信息侧"（丰富反馈），而非"判据侧"；DemoEvolve 的事后审计表明，信息丰富不能替代统计上严谨的选择协议——这是理解该方法边界的钥匙。
+**评估三问总评**：Meta-Harness 的核心贡献在 Q1 的"信息侧"（丰富反馈），而非"判据侧"；DemoEvolve 的事后审计表明，信息丰富不能替代统计上严谨的选择协议——这是理解该方法边界的钥匙。
 
 ---
 
@@ -123,7 +123,7 @@
 ## 7. 结论与意义
 
 - **结论**：给优化器更丰富的历史经验访问，能使自动 harness 工程在多个域超越手工设计。
-- **意义**：确立了"反馈丰富性"这一独立的设计轴；与 AHE（可观测性）、Self‑Harness（回归门控）共同构成 2026 harness 优化三范式。
+- **意义**：确立了"反馈丰富性"这一独立的设计轴；与 AHE（可观测性）、Self-Harness（回归门控）共同构成 2026 harness 优化三范式。
 - **局限**：稀疏/高方差反馈下的选择噪声（被 DemoEvolve 实证）；无显式接受门；提案器能力依赖。
 
 ## 8. 未来方向（基于谱系位置）
