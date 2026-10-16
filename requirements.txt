@@ -1,0 +1,14 @@
+# Documentation site build dependencies.
+# Install:  pip install -r requirements.txt
+# Preview:  mkdocs serve
+# Build:    mkdocs build --strict
+#
+# NOTE: keep this file ASCII-only. pip reads requirements files using the
+# system locale codec; on a Chinese Windows (GBK/cp936) console, non-ASCII
+# comments make pip die with UnicodeDecodeError before installing anything.
+mkdocs-material>=9.5,<10
+
+# Chinese word segmentation for full-text search. MkDocs Material's search
+# plugin auto-enables CJK tokenization when jieba is importable; without it
+# Chinese search degrades to whole-sentence matching and is near useless.
+jieba>=0.42

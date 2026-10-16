@@ -1,0 +1,132 @@
+# MkDocs 站点配置
+# 本地预览：  pip install -r requirements.txt && mkdocs serve
+# 严格构建：  mkdocs build --strict
+
+site_name: RSI 文献精读
+site_description: 递归自我改进（Recursive Self-Improvement）论文精读笔记 —— 哥德尔机、自我改进智能体、零数据自博弈、进化搜索等 49 篇
+site_author: 李子林
+# ↓↓↓ 建好 GitHub 仓库后，把 YOUR-USERNAME 换成你的 GitHub 用户名 ↓↓↓
+site_url: https://YOUR-USERNAME.github.io/RSI-Papers-Reading/
+repo_url: https://github.com/YOUR-USERNAME/RSI-Papers-Reading
+repo_name: RSI-Papers-Reading
+edit_uri: edit/main/docs/
+copyright: 内容采用 CC BY 4.0 许可协议
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.instant      # 站内跳转不整页刷新
+    - navigation.tracking     # 地址栏跟随滚动更新锚点
+    - navigation.sections     # 顶级分组常驻展开
+    - navigation.top          # 回到顶部按钮
+    - navigation.footer       # 底部上一页/下一页
+    - toc.follow              # 右侧目录跟随滚动高亮
+    - search.suggest          # 搜索联想
+    - search.highlight        # 搜索命中高亮
+    - content.code.copy       # 代码块一键复制
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+
+plugins:
+  # 中文全文检索：Material 的 search 插件在检测到已安装 jieba 时自动启用中文分词，
+  # jieba 已写入 requirements.txt。separator 用于兜底切分中英混排文本。
+  - search:
+      separator: '[\s​\-,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;'
+      lang:
+        - zh
+        - en
+
+markdown_extensions:
+  - tables                # 全文 860 行表格依赖此项
+  - toc:
+      permalink: true     # 各级标题生成可复制的锚点链接
+      toc_depth: 3
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  # ⚠️ 切勿添加 pymdownx.arithmatex：笔记中的 $15 / $1.91 / $5000 / $22k
+  #    是货币金额而非数学公式，启用后会被逐对匹配成数学式从而排版错乱。
+  #    实测全文 $$ 出现 0 次，无需数学渲染。
+
+# 导航由 scripts/gen_nav.py 依据 docs/ 下的文件名自动生成，
+# 新增笔记后运行 `python scripts/gen_nav.py` 即可，请勿手工编辑下方区块。
+# --- NAV BEGIN ---
+nav:
+  - 总索引: 'index.md'
+  - 参考文献清单: 'references.md'
+  - '01 · 主线：哥德尔式 RSI 与自我改进智能体':
+      - 'Gödel Machine 理论源头': '01-主线-01-Gödel Machine理论源头-精读.md'
+      - 'STOP': '01-主线-02-STOP-精读.md'
+      - 'ADAS / Meta Agent Search': '01-主线-03-ADAS-精读.md'
+      - 'Gödel Agent': '01-主线-04-Gödel Agent-精读.md'
+      - 'SICA': '01-主线-05-SICA-精读.md'
+      - 'Darwin Gödel Machine': '01-主线-06-Darwin Gödel Machine-精读.md'
+      - 'HGM': '01-主线-07-HGM-精读.md'
+      - 'Live-SWE-agent': '01-主线-08-Live-SWE-agent-精读.md'
+      - 'Self-Harness': '01-主线-09-Self-Harness-精读.md'
+      - 'Co-Harness': '01-主线-10-Co-Harness-精读.md'
+      - 'MOSS': '01-主线-11-MOSS-精读.md'
+      - 'Autogenesis': '01-主线-12-Autogenesis-精读.md'
+      - 'AHE': '01-主线-13-AHE-精读.md'
+      - 'HALO': '01-主线-14-HALO-精读.md'
+      - 'Meta-Harness': '01-主线-15-Meta-Harness-精读.md'
+      - 'DemoEvolve': '01-主线-16-DemoEvolve-精读.md'
+      - 'Red Queen Gödel Machine': '01-主线-17-Red Queen Gödel Machine-精读.md'
+      - 'Hierarchical Self-Improvement': '01-主线-18-Hierarchical Self-Improvement-精读.md'
+  - '02 · 综述与立场':
+      - 'Bounded-to-Autonomous': '02-综述-01-Bounded-to-Autonomous-综述-精读.md'
+      - 'The Last AI Built by Humans': '02-综述-02-The Last AI Built by Humans-精读.md'
+      - 'Anthropic：When AI Builds Itself': '02-综述-03-Anthropic-When AI Builds Itself-精读.md'
+  - '03 · 其他路线：权重自编辑与经典自举':
+      - 'SEAL': '03-其他路线-01-SEAL-精读.md'
+      - 'Transformer²': '03-其他路线-02-Transformer²-精读.md'
+      - 'STaR': '03-其他路线-03-STaR-精读.md'
+      - 'ReST-EM': '03-其他路线-04-ReST-EM-精读.md'
+      - 'Self-Refine': '03-其他路线-05-Self-Refine-精读.md'
+      - 'Reflexion': '03-其他路线-06-Reflexion-精读.md'
+      - 'Self-Rewarding-LM': '03-其他路线-07-Self-Rewarding-LM-精读.md'
+      - 'SPIN': '03-其他路线-08-SPIN-精读.md'
+  - '04 · 零数据自博弈':
+      - 'Absolute-Zero': '04-零数据自博弈-01-Absolute-Zero-精读.md'
+      - 'R-Zero': '04-零数据自博弈-02-R-Zero-精读.md'
+      - 'Socratic-Zero': '04-零数据自博弈-03-Socratic-Zero-精读.md'
+      - 'Vision-Zero': '04-零数据自博弈-04-Vision-Zero-精读.md'
+      - 'SPICE': '04-零数据自博弈-05-SPICE-精读.md'
+      - 'Self-Challenging': '04-零数据自博弈-06-Self-Challenging-精读.md'
+      - 'SeRL': '04-零数据自博弈-07-SeRL-精读.md'
+  - '05 · 进化搜索':
+      - 'FunSearch': '05-进化搜索-01-FunSearch-精读.md'
+      - 'AlphaEvolve': '05-进化搜索-02-AlphaEvolve-精读.md'
+      - 'ShinkaEvolve': '05-进化搜索-03-ShinkaEvolve-精读.md'
+      - 'ThetaEvolve': '05-进化搜索-04-ThetaEvolve-精读.md'
+      - 'EvoGit': '05-进化搜索-05-EvoGit-精读.md'
+      - 'LLM2LLM': '05-进化搜索-06-LLM2LLM-精读.md'
+  - '06 · 经验与上下文':
+      - 'Voyager': '06-经验与上下文-01-Voyager-精读.md'
+      - 'ACE': '06-经验与上下文-02-ACE-精读.md'
+      - 'EvolveR': '06-经验与上下文-03-EvolveR-精读.md'
+      - 'AFlow': '06-经验与上下文-04-AFlow-精读.md'
+  - '07 · 自动化科研':
+      - 'AI-Scientist': '07-自动化科研-01-AI-Scientist-精读.md'
+      - 'AI-Scientist-v2': '07-自动化科研-02-AI-Scientist-v2-精读.md'
+      - 'AIDE²：AI 研究智能体的 RSI': '07-自动化科研-03-AIDE2-RSI-of-AI-Research-Agents-精读.md'
+# --- NAV END ---
+
+
+

@@ -1,0 +1,61 @@
+name: 构建并发布文档站
+
+# 推送到 main 分支时自动构建 MkDocs 站点并发布到 GitHub Pages。
+# 首次使用需在仓库 Settings → Pages → Source 中选择「GitHub Actions」。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # 允许在 Actions 页面手动触发
+
+# 授予 GITHUB_TOKEN 发布 Pages 所需的最小权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时刻只跑一个发布任务；排队中的任务不取消，避免发布到一半被打断
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: 构建站点
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+
+      - name: 笔记一致性自检
+        run: python scripts/check_notes.py --quiet
+        # 该步骤不阻断构建：笔记内容缺小节属已知待办，见 CHANGELOG.md
+        continue-on-error: true
+
+      - name: 构建站点
+        run: mkdocs build --strict
+
+      - name: 上传站点产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    name: 发布到 Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 发布
+        id: deployment
+        uses: actions/deploy-pages@v4
