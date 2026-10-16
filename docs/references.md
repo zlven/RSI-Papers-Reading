@@ -3,11 +3,11 @@
 > 本清单由仓库根目录的 `scripts/extract_refs.py` 从各篇精读头部的「论文信息」块自动抽取生成，运行该脚本即可刷新。
 > 脚本只转录笔记中已写明的内容，**不猜测 arXiv 编号**；标注「待补」的条目表示原笔记未写明编号（笔记头部已声明「非 arXiv 文献」的条目不在此列，如 HALO 是开源项目、Anthropic 是立场报告、FunSearch 只有 Nature 版）。
 
-共 50 篇文献。
+共 53 篇文献。
 
 | 分类 | 篇数 |
 |---|---|
-| 01 · 主线：哥德尔式 RSI 与自我改进智能体 | 19 |
+| 01 · 主线：哥德尔式 RSI 与自我改进智能体 | 22 |
 | 02 · 综述与立场 | 3 |
 | 03 · 其他路线：权重自编辑与经典自举 | 8 |
 | 04 · 零数据自博弈 | 7 |
@@ -37,7 +37,10 @@
 | 16 | DemoEvolve | Lirong Che, Yuzhe Yang, Peiwen Lin, Chuang Wang, Xueqian Wang, Jian Su | 预印本 2026 | [arXiv:2605.24539](https://arxiv.org/abs/2605.24539) | [笔记](01-主线-16-DemoEvolve-精读.md) |
 | 17 | Red Queen Gödel Machine（智能体与其评估器的共同进化） | Alex Iacob, Andrej Jovanović, William F. Shen, Daniel Burkhardt, Meghdad Kurmanji, Nurb… | 预印本 2026 | [arXiv:2606.26294](https://arxiv.org/abs/2606.26294) | [笔记](01-主线-17-Red%20Queen%20Gödel%20Machine-精读.md) |
 | 18 | Hierarchical Self-Improvement | Tailin Zhou | 预印本 2026 | [arXiv:2608.08466](https://arxiv.org/abs/2608.08466) | [笔记](01-主线-18-Hierarchical%20Self-Improvement-精读.md) |
-| 19 | 世界模型驱动的跨领域递归自我改进 | Taoyong Cui、Pinxian Zeng、Wanghan Xu、Hao Xiao、Shuhan Xue、Qiang Gao、Wanli Ouyang、Pheng An… | 预印本 2026 | [arXiv:2610.13912](https://arxiv.org/abs/2610.13912) | [笔记](01-主线-19-RSI-Anything-精读.md) |
+| 19 | Recursive Self-Improvement of LLM Agents via Two-Timescale Meta-Skill Evolution | Zefeng Wang、Minxi Yan、Jinhe Bi、Sikuan Yan、Volker Tresp、Yunpu Ma | 预印本 2026 | [arXiv:2607.05297](https://arxiv.org/abs/2607.05297) | [笔记](01-主线-19-MetaSkill-Evolve-精读.md) |
+| 20 | Self-Referential Agents with Metacognitive Self-Modification（DGM-H） | Jenny Zhang、Bingchen Zhao、Wannan Yang、Jakob Foerster、Jeff Clune、Minqi Jiang、Sam Devlin、… | 预印本 2026 | [arXiv:2603.19461](https://arxiv.org/abs/2603.19461) | [笔记](01-主线-20-HyperAgents-精读.md) |
+| 21 | Recursive Self-Improving Coding Agents via Comparative Evolution | Changzhi Liu、Yilun Liu、Sikuan Yan、Volker Tresp、Yunpu Ma | 预印本 2026 | [arXiv:2608.07645](https://arxiv.org/abs/2608.07645) | [笔记](01-主线-21-Mendel-Gödel-Machine-精读.md) |
+| 22 | 世界模型驱动的跨领域递归自我改进 | Taoyong Cui、Pinxian Zeng、Wanghan Xu、Hao Xiao、Shuhan Xue、Qiang Gao、Wanli Ouyang、Pheng An… | 预印本 2026 | [arXiv:2610.13912](https://arxiv.org/abs/2610.13912) | [笔记](01-主线-22-RSI-Anything-精读.md) |
 
 ## 02 · 综述与立场
 

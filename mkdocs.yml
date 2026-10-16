@@ -89,7 +89,10 @@ nav:
       - 'DemoEvolve': '01-主线-16-DemoEvolve-精读.md'
       - 'Red Queen Gödel Machine': '01-主线-17-Red Queen Gödel Machine-精读.md'
       - 'Hierarchical Self-Improvement': '01-主线-18-Hierarchical Self-Improvement-精读.md'
-      - 'RSI-Anything': '01-主线-19-RSI-Anything-精读.md'
+      - 'MetaSkill-Evolve': '01-主线-19-MetaSkill-Evolve-精读.md'
+      - 'HyperAgents': '01-主线-20-HyperAgents-精读.md'
+      - 'Mendel-Gödel-Machine': '01-主线-21-Mendel-Gödel-Machine-精读.md'
+      - 'RSI-Anything': '01-主线-22-RSI-Anything-精读.md'
   - '02 · 综述与立场':
       - 'Bounded-to-Autonomous': '02-综述-01-Bounded-to-Autonomous-综述-精读.md'
       - 'The Last AI Built by Humans': '02-综述-02-The Last AI Built by Humans-精读.md'
@@ -128,6 +131,7 @@ nav:
       - 'AI-Scientist-v2': '07-自动化科研-02-AI-Scientist-v2-精读.md'
       - 'AIDE²：AI 研究智能体的 RSI': '07-自动化科研-03-AIDE2-RSI-of-AI-Research-Agents-精读.md'
 # --- NAV END ---
+
 
 
 

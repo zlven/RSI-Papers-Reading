@@ -18,14 +18,14 @@
 
 | 分类 | 篇数 | 主题 |
 |---|---:|---|
-| **01 · 主线** | 19 | 哥德尔式 RSI 与自我改进智能体：Gödel Machine → STOP → Gödel Agent → SICA → DGM → HGM → Self-/Co-Harness → RQGM → RSI-Anything |
+| **01 · 主线** | 22 | 哥德尔式 RSI 与自我改进智能体：Gödel Machine → STOP → Gödel Agent → SICA → DGM → MGM → HGM → HyperAgents → MetaSkill-Evolve → Self-/Co-Harness → RQGM → RSI-Anything |
 | **02 · 综述与立场** | 3 | 领域综述与前沿实验室的立场报告 |
 | **03 · 其他路线** | 8 | 权重自编辑与经典自举：SEAL、Transformer²、STaR、ReST-EM、Self-Refine、Reflexion、SPIN |
 | **04 · 零数据自博弈** | 7 | 无人类数据时判据从何而来：Absolute Zero、R-Zero、Socratic-Zero、SPICE |
 | **05 · 进化搜索** | 6 | FunSearch、AlphaEvolve、ShinkaEvolve、ThetaEvolve、EvoGit |
 | **06 · 经验与上下文** | 4 | 经验资产化的载体谱系：Voyager、ACE、EvolveR、AFlow |
 | **07 · 自动化科研** | 3 | AI Scientist v1/v2、AIDE² |
-| **合计** | **50** | 完整清单见 [`docs/references.md`](docs/references.md) |
+| **合计** | **53** | 完整清单见 [`docs/references.md`](docs/references.md) |
 
 ## 分析框架
 
@@ -46,7 +46,7 @@
 | **L1** | 自举循环：模型产出变成训练信号反过来改变模型 | STaR、ReST-EM、SPIN |
 | **L1.5** | 课程自产：连"学什么"都由系统内生 | Absolute Zero、R-Zero、SPICE |
 | **L2** | 改进者可被替换/改写，但改进规则固定 | SICA、Self-Harness、AIDE² |
-| **L3** | 完全自指：改写逻辑自身也在可改写范围内 | Gödel Agent、HSI |
+| **L3** | 完全自指：改写逻辑自身也在可改写范围内 | Gödel Agent、HSI、MetaSkill-Evolve、HyperAgents |
 | **L4 / L5** | 评估器可改写；权重×脚手架联合递归；理论上限 | RQGM、Co-Harness、Gödel Machine |
 
 完整图例与推荐阅读路径见 **[总索引](docs/index.md)**。
