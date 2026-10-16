@@ -7,9 +7,9 @@
 每篇都是**独立精读**：判断只基于该论文自身文本，不做预设的跨文对比。
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Docs](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB-GitHub%20Pages-4f46e5)](https://YOUR-USERNAME.github.io/RSI-Papers-Reading/)
+[![Docs](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB-GitHub%20Pages-4f46e5)](https://zlven.github.io/RSI-Papers-Reading/)
 
-> **在线浏览**：<https://YOUR-USERNAME.github.io/RSI-Papers-Reading/>
+> **在线浏览**：<https://zlven.github.io/RSI-Papers-Reading/>
 > （带左侧分类导航、中文全文检索、深色模式；也可直接点开 `docs/` 下的 Markdown 文件阅读。）
 
 ---
