@@ -65,7 +65,8 @@ REQUIRED_BY_TIER = {
 # 「（卡片式）」写在笔记开头的模板说明行里，是作者显式的档位声明
 CARD_RE = re.compile(r"卡片式")
 
-NOT_A_NOTE = {"index.md", "references.md"}  # 首页与文献清单不套精读模板
+# 首页、文献清单与模板页本身都不是精读笔记，不套精读模板
+NOT_A_NOTE = {"index.md", "references.md", "template.md", "template-v1.md"}
 
 # 可安全替换为 ASCII 连字符的字符（外形与 '-' 相同，语义就是连字符）
 FIXABLE = {

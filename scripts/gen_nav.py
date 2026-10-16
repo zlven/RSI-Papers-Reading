@@ -77,6 +77,15 @@ NUM_TO_CAT = {
 # 第 1 组是分类号、第 2 组是分类名，二者都要用，别弄反
 FILENAME_RE = re.compile(r"^(\d{2})-([^-]+)-(\d{2})-(.+)\.md$")
 
+# 与笔记并列、但不归入任何分类的独立页面（列表顺序即侧边栏顺序）
+FRONT_PAGES = [
+    ("总索引", "index.md"),
+    ("精读模板", "template.md"),
+    ("精读模板 v1.0（历史）", "template-v1.md"),
+    ("参考文献清单", "references.md"),
+]
+FRONT_NAMES = {name for _label, name in FRONT_PAGES}
+
 
 def yaml_str(value: str) -> str:
     """输出一个 YAML 安全字符串字面量（单引号风格，转义内部单引号）。"""
@@ -94,8 +103,8 @@ def collect() -> dict[str, list[tuple[int, str, str]]]:
     """返回 {分组标题: [(序号, 侧边栏名, 相对路径), ...]}，按分类号与序号排序。"""
     groups: dict[str, list[tuple[int, str, str]]] = {}
     for path in sorted(DOCS.glob("*.md")):
-        if path.name in ("index.md", "references.md"):
-            continue  # 首页与参考文献清单单列，不进分组
+        if path.name in FRONT_NAMES:
+            continue  # 独立页面单列，不进分类分组
         m = FILENAME_RE.match(path.name)
         if not m:
             print(f"  [跳过] 文件名不符合约定：{path.name}", file=sys.stderr)
@@ -122,8 +131,8 @@ def collect() -> dict[str, list[tuple[int, str, str]]]:
 
 def render(groups: dict[str, list[tuple[int, str, str]]]) -> str:
     lines = [BEGIN, "nav:"]
-    lines.append(f"  - 总索引: {yaml_str('index.md')}")
-    lines.append(f"  - 参考文献清单: {yaml_str('references.md')}")
+    for label, name in FRONT_PAGES:
+        lines.append(f"  - {label}: {yaml_str(name)}")
     for group, items in groups.items():
         lines.append(f"  - {yaml_str(group)}:")
         for _order, title, name in items:

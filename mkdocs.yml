@@ -69,6 +69,8 @@ markdown_extensions:
 # --- NAV BEGIN ---
 nav:
   - 总索引: 'index.md'
+  - 精读模板: 'template.md'
+  - 精读模板 v1.0（历史）: 'template-v1.md'
   - 参考文献清单: 'references.md'
   - '01 · 主线：哥德尔式 RSI 与自我改进智能体':
       - 'Gödel Machine 理论源头': '01-主线-01-Gödel Machine理论源头-精读.md'
@@ -152,6 +154,7 @@ nav:
       - 'SAEScientist-Bench': '08-评测基准-14-SAEScientist-Bench-精读.md'
       - 'SAHOO': '08-评测基准-15-SAHOO-精读.md'
 # --- NAV END ---
+
 
 
 
