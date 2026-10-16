@@ -3,17 +3,18 @@
 > 本清单由仓库根目录的 `scripts/extract_refs.py` 从各篇精读头部的「论文信息」块自动抽取生成，运行该脚本即可刷新。
 > 脚本只转录笔记中已写明的内容，**不猜测 arXiv 编号**；标注「待补」的条目表示原笔记未写明编号（笔记头部已声明「非 arXiv 文献」的条目不在此列，如 HALO 是开源项目、Anthropic 是立场报告、FunSearch 只有 Nature 版）。
 
-共 53 篇文献。
+共 73 篇文献。
 
 | 分类 | 篇数 |
 |---|---|
-| 01 · 主线：哥德尔式 RSI 与自我改进智能体 | 22 |
-| 02 · 综述与立场 | 3 |
+| 01 · 主线：哥德尔式 RSI 与自我改进智能体 | 24 |
+| 02 · 综述与立场 | 5 |
 | 03 · 其他路线：权重自编辑与经典自举 | 8 |
 | 04 · 零数据自博弈 | 7 |
 | 05 · 进化搜索 | 6 |
 | 06 · 经验与上下文 | 4 |
-| 07 · 自动化科研 | 3 |
+| 07 · 自动化科研 | 4 |
+| 08 · 评测基准 | 15 |
 
 ## 01 · 主线：哥德尔式 RSI 与自我改进智能体
 
@@ -41,6 +42,8 @@
 | 20 | Self-Referential Agents with Metacognitive Self-Modification（DGM-H） | Jenny Zhang、Bingchen Zhao、Wannan Yang、Jakob Foerster、Jeff Clune、Minqi Jiang、Sam Devlin、… | 预印本 2026 | [arXiv:2603.19461](https://arxiv.org/abs/2603.19461) | [笔记](01-主线-20-HyperAgents-精读.md) |
 | 21 | Recursive Self-Improving Coding Agents via Comparative Evolution | Changzhi Liu、Yilun Liu、Sikuan Yan、Volker Tresp、Yunpu Ma | 预印本 2026 | [arXiv:2608.07645](https://arxiv.org/abs/2608.07645) | [笔记](01-主线-21-Mendel-Gödel-Machine-精读.md) |
 | 22 | 世界模型驱动的跨领域递归自我改进 | Taoyong Cui、Pinxian Zeng、Wanghan Xu、Hao Xiao、Shuhan Xue、Qiang Gao、Wanli Ouyang、Pheng An… | 预印本 2026 | [arXiv:2610.13912](https://arxiv.org/abs/2610.13912) | [笔记](01-主线-22-RSI-Anything-精读.md) |
+| 23 | SIFT（LLM 裁判预筛的低成本自改进评测） | MIT / Sakana AI | 2026 | **待补** | [笔记](01-主线-23-SIFT-精读.md) |
+| 24 | GEA: Generative Evolutionary Agent | — | 2026 | **待补** | [笔记](01-主线-24-GEA-精读.md) |
 
 ## 02 · 综述与立场
 
@@ -49,6 +52,8 @@
 | 01 | Recursive Self-Improvement in AI: From Bounded Self-Refinement to Autonomous Research Loops | Mingguang Chen, Licheng Wang, Bo Qu | 预印本 2026 | [arXiv:2607.07663](https://arxiv.org/abs/2607.07663) | [笔记](02-综述-01-Bounded-to-Autonomous-综述-精读.md) |
 | 02 | The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement | Yi Duan, Ying Liu, Zirui Tang, …, Xuanhe Zhou, Fan Wu 等 36 位作者 | 预印本 2026 | [arXiv:2609.11873](https://arxiv.org/abs/2609.11873) | [笔记](02-综述-02-The%20Last%20AI%20Built%20by%20Humans-精读.md) |
 | 03 | When AI Builds Itself（Anthropic Institute, 2026-06-04） | Marina Favaro & Jack Clark，Anthropic Institute，2026-06-04 发布 | Anthropic Institute 立场报告 | —（非 arXiv 文献） | [笔记](02-综述-03-Anthropic-When%20AI%20Builds%20Itself-精读.md) |
+| 04 | The Path to Recursive Self-Improving Agents（D2I-ai 综述） | — | 2026 | **待补** | [笔记](02-综述-04-D2I分级综述-精读.md) |
+| 05 | Self-Evolving Agents 综述 | — | arXiv:2608.08466（2026） | [arXiv:2608.08466](https://arxiv.org/abs/2608.08466) | [笔记](02-综述-05-Self-Evolving-Agents综述-精读.md) |
 
 ## 03 · 其他路线：权重自编辑与经典自举
 
@@ -102,3 +107,41 @@
 | 01 | The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery | Lu, Lu, Lange, Foerster, Clune, Ha（Sakana AI / Oxford / UBC） | Science 2024 | [arXiv:2408.06292](https://arxiv.org/abs/2408.06292) | [笔记](07-自动化科研-01-AI-Scientist-精读.md) |
 | 02 | The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search | Yamada et al.（Sakana AI 等） | ICLR 2025 | [arXiv:2504.08066](https://arxiv.org/abs/2504.08066) | [笔记](07-自动化科研-02-AI-Scientist-v2-精读.md) |
 | 03 | Recursive self-improvement of AI research agents | Srikanth et al.（Weco AI） | 预印本 2026 | [arXiv:2609.26457](https://arxiv.org/abs/2609.26457) | [笔记](07-自动化科研-03-AIDE2-RSI-of-AI-Research-Agents-精读.md) |
+| 04 | AIDE: An AI-Driven Exploration Agent for Machine Learning Engineering | Weco AI | arXiv:2502.13138（2025）；代码：`WecoAI/aideml` | [arXiv:2502.13138](https://arxiv.org/abs/2502.13138) | [笔记](07-自动化科研-04-AIDE-精读.md) |
+
+## 08 · 评测基准
+
+| # | 论文 | 作者 / 团队 | 发表 | 链接 | 精读 |
+|---|---|---|---|---|---|
+| 01 | RSIBench-Data（以数据为中心的递归自我改进基准） | Fanqing Meng 等 | arXiv:2607.25886（2026 年 7 月），开源 | [arXiv:2607.25886](https://arxiv.org/abs/2607.25886) | [笔记](08-评测基准-01-RSIBench-Data-精读.md) |
+| 02 | SEABench（自我进化 Agent 的安全失效归因基准） | — | arXiv:2609.35596（2026 年 9 月），开源 | [arXiv:2609.35596](https://arxiv.org/abs/2609.35596) | [笔记](08-评测基准-02-SEABench-精读.md) |
+| 03 | PaperBench: Evaluating AI's Ability to Replicate AI Research | Giulio Starace 等（OpenAI） | arXiv:2504.01848，ICML 2025 | [arXiv:2504.01848](https://arxiv.org/abs/2504.01848) | [笔记](08-评测基准-03-PaperBench-精读.md) |
+| 04 | PostTrainBench: Can LLM Agents Automate LLM Post-Training? | Rank 等 | ICML 2026 | **待补** | [笔记](08-评测基准-04-PostTrainBench-精读.md) |
+| 05 | MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering | OpenAI | ICLR 2025 | **待补** | [笔记](08-评测基准-05-MLE-bench-精读.md) |
+| 06 | RE-Bench（ICML 2025）；HCAST: Human-Calibrated Autonomy Software Tasks（arXiv:2503.17354）；Measuring AI Ability to Complete Long Tasks / Time Horizon 1.1（2025–2026） | METR | ICML 2025 | [arXiv:2503.17354](https://arxiv.org/abs/2503.17354) | [笔记](08-评测基准-06-RE-Bench与HCAST-精读.md) |
+| 07 | MLS-Bench: A Holistic and Rigorous Assessment of ML Research Agents | Princeton / UW 等 | 2026；社区平台 mls-bench.com | **待补** | [笔记](08-评测基准-07-MLS-Bench-精读.md) |
+| 08 | TamperBench（对齐篡改压测基准） | — | KDD 2026；代码：`criticalml-uw/TamperBench` | **待补** | [笔记](08-评测基准-08-TamperBench-精读.md) |
+| 09 | PATH-Bench: Path-Dependent Evaluation of Lifelong Agents | — | arXiv:2608.01149（2026） | [arXiv:2608.01149](https://arxiv.org/abs/2608.01149) | [笔记](08-评测基准-09-PATH-Bench-精读.md) |
+| 10 | LifelongAgentBench: Evaluating LLM Agents as Lifelong Learners | — | arXiv:2505.11942（2025） | [arXiv:2505.11942](https://arxiv.org/abs/2505.11942) | [笔记](08-评测基准-10-LifelongAgentBench-精读.md) |
+| 11 | RSI-Bench（RSI 六维评测框架） | — | 2026，GitHub `sunghunkwag/rsi-bench`（MIT），社区框架 | **待补** | [笔记](08-评测基准-11-RSI-Bench-精读.md) |
+| 12 | MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation | — | 2023（NeurIPS 2023 Datasets & Benchmarks） | **待补** | [笔记](08-评测基准-12-MLAgentBench-精读.md) |
+| 13 | AutoLab | — | 2026 | **待补** | [笔记](08-评测基准-13-AutoLab-精读.md) |
+| 14 | SAEScientist-Bench | — | 2026 | **待补** | [笔记](08-评测基准-14-SAEScientist-Bench-精读.md) |
+| 15 | SAHOO（RSI 过程目标漂移监控） | — | ICLR 2026 Workshop on Recursive Self-Improvement | **待补** | [笔记](08-评测基准-15-SAHOO-精读.md) |
+
+## 待补 arXiv 编号
+
+以下条目的原笔记头部未写明 arXiv 编号。脚本不作推断，确认后请补入对应笔记的元信息块：
+
+- `01-主线-23-SIFT-精读.md`
+- `01-主线-24-GEA-精读.md`
+- `02-综述-04-D2I分级综述-精读.md`
+- `08-评测基准-04-PostTrainBench-精读.md`
+- `08-评测基准-05-MLE-bench-精读.md`
+- `08-评测基准-07-MLS-Bench-精读.md`
+- `08-评测基准-08-TamperBench-精读.md`
+- `08-评测基准-11-RSI-Bench-精读.md`
+- `08-评测基准-12-MLAgentBench-精读.md`
+- `08-评测基准-13-AutoLab-精读.md`
+- `08-评测基准-14-SAEScientist-Bench-精读.md`
+- `08-评测基准-15-SAHOO-精读.md`

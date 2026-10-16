@@ -5,7 +5,10 @@
 
 1. **文件名归一化**——必须是 NFC。中文 macOS 上常出现 NFD 分解形式，
    会造成 MkDocs 路由与 Markdown 链接静默失配。
-2. **模板完整性**——每篇应含 `## 0.` 到 `## 9.` 共 10 个小节（模板 v1.0）。
+2. **模板完整性**——按笔记的**深度档位**校验必备小节（模板 v1.0）。论文按阅读
+   深度分三档：完整精读须含 `## 0.`–`## 9.`；简读至少 `## 0.`–`## 4.`；
+   卡片式至少 `## 0.`–`## 2.`。档位由笔记开头的「（卡片式）」自声明与节数共同
+   判定，以免把有意的分档误报成「缺小节」。
 3. **站内链接可解析**——相对 Markdown 链接必须指向 docs/ 下真实存在的文件。
 4. **arXiv 号缺失**——头部未写明编号的篇目，供人工补充；脚本不猜。
    笔记头部已声明「非 arXiv 文献」的条目不列入（如 HALO 是开源项目、
@@ -50,7 +53,18 @@ ARXIV_OLD = re.compile(r"arXiv[:\s]*([a-z-]+(?:\.[A-Z]{2})?/\d{7})")  # cs/03090
 NON_ARXIV_RE = re.compile(r"非\s*arXiv|无\s*arXiv")
 MD_LINK = re.compile(r"(?<!\!)\[([^\]]+)\]\(([^)#\s]+)(?:#[^)]*)?\)")
 
-EXPECTED_SECTIONS = set(range(10))  # 注意是 int，需与 int(n) 同型才能求差集
+# 深度分档：档位不同，必备小节不同。三档由「自声明 + 节数」判定，见 note_tier()。
+FULL_SECTIONS = set(range(10))     # 完整精读：## 0. – ## 9.
+BRIEF_SECTIONS = {0, 1, 2, 3, 4}   # 简读：至少 ## 0. – ## 4.
+CARD_SECTIONS = {0, 1, 2}          # 卡片式：至少 ## 0. – ## 2.
+REQUIRED_BY_TIER = {
+    "完整精读": FULL_SECTIONS,
+    "简读": BRIEF_SECTIONS,
+    "卡片式": CARD_SECTIONS,
+}
+# 「（卡片式）」写在笔记开头的模板说明行里，是作者显式的档位声明
+CARD_RE = re.compile(r"卡片式")
+
 NOT_A_NOTE = {"index.md", "references.md"}  # 首页与文献清单不套精读模板
 
 # 可安全替换为 ASCII 连字符的字符（外形与 '-' 相同，语义就是连字符）
@@ -80,22 +94,40 @@ def check_encoding(files: list[pathlib.Path]) -> list[str]:
     return problems
 
 
-def check_sections(files: list[pathlib.Path]) -> tuple[list[str], list[str]]:
+def note_tier(text: str, found: set[int]) -> str:
+    """判定笔记的深度档位。
+
+    自声明优先（开头几行的「（卡片式）」）；否则按已写出的节数：满 10 节为完整
+    精读，≥5 节为简读，再少归卡片式。返回 REQUIRED_BY_TIER 的键之一。
+    """
+    if CARD_RE.search("\n".join(text.split("\n")[:6])):
+        return "卡片式"
+    if FULL_SECTIONS <= found:
+        return "完整精读"
+    return "简读" if len(found) >= 5 else "卡片式"
+
+
+def check_sections(files: list[pathlib.Path]) -> tuple[list[str], list[str], collections.Counter]:
     problems, no_arxiv = [], []
+    tiers: collections.Counter = collections.Counter()
     for path in files:
         if path.name in NOT_A_NOTE:
             continue
         text = path.read_text(encoding="utf-8")
         found = {int(n) for n in SECTION_RE.findall(text)}
-        missing = sorted(EXPECTED_SECTIONS - found)
+        # 注意 int(n) 需与档位集合同型才能求差集
+        tier = note_tier(text, found)
+        tiers[tier] += 1
+        missing = sorted(REQUIRED_BY_TIER[tier] - found)
         if missing:
             problems.append(
-                f"[模板] {rel(path)} 缺少小节：{', '.join('## ' + str(n) + '.' for n in missing)}"
+                f"[模板] {rel(path)}（{tier}）缺少小节："
+                f"{', '.join('## ' + str(n) + '.' for n in missing)}"
             )
         head = "\n".join(text.split("\n")[:25])
         if not (ARXIV_NEW.search(head) or ARXIV_OLD.search(head)) and not NON_ARXIV_RE.search(head):
             no_arxiv.append(rel(path))
-    return problems, no_arxiv
+    return problems, no_arxiv, tiers
 
 
 def check_links(files: list[pathlib.Path]) -> list[str]:
@@ -178,7 +210,7 @@ def main() -> int:
         return 0
 
     enc = check_encoding(files)
-    tmpl, no_arxiv = check_sections(files)
+    tmpl, no_arxiv, tiers = check_sections(files)
     links = check_links(files)
 
     if not quiet:
@@ -188,7 +220,11 @@ def main() -> int:
         for p in enc:
             print("   " + p)
 
-        print(f"\n2. 模板完整性（## 0.–## 9.）：{'全部完整 ✓' if not tmpl else str(len(tmpl)) + ' 个问题'}")
+        print(f"\n2. 模板完整性（按深度档位）：{'全部达标 ✓' if not tmpl else str(len(tmpl)) + ' 个问题'}")
+        for tier in ("完整精读", "简读", "卡片式"):
+            if tiers[tier]:
+                need = "、".join(f"## {n}." for n in sorted(REQUIRED_BY_TIER[tier]))
+                print(f"   {tier}：{tiers[tier]:>3} 篇（必备 {need}）")
         for p in tmpl:
             print("   " + p)
 

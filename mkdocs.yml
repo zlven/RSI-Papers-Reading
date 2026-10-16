@@ -93,10 +93,14 @@ nav:
       - 'HyperAgents': '01-主线-20-HyperAgents-精读.md'
       - 'Mendel-Gödel-Machine': '01-主线-21-Mendel-Gödel-Machine-精读.md'
       - 'RSI-Anything': '01-主线-22-RSI-Anything-精读.md'
+      - 'SIFT': '01-主线-23-SIFT-精读.md'
+      - 'GEA': '01-主线-24-GEA-精读.md'
   - '02 · 综述与立场':
       - 'Bounded-to-Autonomous': '02-综述-01-Bounded-to-Autonomous-综述-精读.md'
       - 'The Last AI Built by Humans': '02-综述-02-The Last AI Built by Humans-精读.md'
       - 'Anthropic：When AI Builds Itself': '02-综述-03-Anthropic-When AI Builds Itself-精读.md'
+      - 'D2I分级综述': '02-综述-04-D2I分级综述-精读.md'
+      - 'Self-Evolving-Agents综述': '02-综述-05-Self-Evolving-Agents综述-精读.md'
   - '03 · 其他路线：权重自编辑与经典自举':
       - 'SEAL': '03-其他路线-01-SEAL-精读.md'
       - 'Transformer²': '03-其他路线-02-Transformer²-精读.md'
@@ -130,7 +134,25 @@ nav:
       - 'AI-Scientist': '07-自动化科研-01-AI-Scientist-精读.md'
       - 'AI-Scientist-v2': '07-自动化科研-02-AI-Scientist-v2-精读.md'
       - 'AIDE²：AI 研究智能体的 RSI': '07-自动化科研-03-AIDE2-RSI-of-AI-Research-Agents-精读.md'
+      - 'AIDE': '07-自动化科研-04-AIDE-精读.md'
+  - '08 · 评测基准':
+      - 'RSIBench-Data': '08-评测基准-01-RSIBench-Data-精读.md'
+      - 'SEABench': '08-评测基准-02-SEABench-精读.md'
+      - 'PaperBench': '08-评测基准-03-PaperBench-精读.md'
+      - 'PostTrainBench': '08-评测基准-04-PostTrainBench-精读.md'
+      - 'MLE-bench': '08-评测基准-05-MLE-bench-精读.md'
+      - 'RE-Bench与HCAST': '08-评测基准-06-RE-Bench与HCAST-精读.md'
+      - 'MLS-Bench': '08-评测基准-07-MLS-Bench-精读.md'
+      - 'TamperBench': '08-评测基准-08-TamperBench-精读.md'
+      - 'PATH-Bench': '08-评测基准-09-PATH-Bench-精读.md'
+      - 'LifelongAgentBench': '08-评测基准-10-LifelongAgentBench-精读.md'
+      - 'RSI-Bench': '08-评测基准-11-RSI-Bench-精读.md'
+      - 'MLAgentBench': '08-评测基准-12-MLAgentBench-精读.md'
+      - 'AutoLab': '08-评测基准-13-AutoLab-精读.md'
+      - 'SAEScientist-Bench': '08-评测基准-14-SAEScientist-Bench-精读.md'
+      - 'SAHOO': '08-评测基准-15-SAHOO-精读.md'
 # --- NAV END ---
+
 
 
 
