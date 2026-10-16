@@ -80,11 +80,14 @@ FILENAME_RE = re.compile(r"^(\d{2})-([^-]+)-(\d{2})-(.+)\.md$")
 # 与笔记并列、但不归入任何分类的独立页面（列表顺序即侧边栏顺序）
 FRONT_PAGES = [
     ("总索引", "index.md"),
-    ("精读模板", "template.md"),
-    ("精读模板 v1.0（历史）", "template-v1.md"),
     ("参考文献清单", "references.md"),
 ]
-FRONT_NAMES = {name for _label, name in FRONT_PAGES}
+
+# 同样与笔记并列、但**不进侧边栏**的辅助页面：模板属参考资料，不占导航位，
+# 只从首页正文链入。仍列在此处以避开下方「文件名不符合约定」的误报。
+OFF_NAV_PAGES = {"template.md", "template-v1.md"}
+
+FRONT_NAMES = {name for _label, name in FRONT_PAGES} | OFF_NAV_PAGES
 
 
 def yaml_str(value: str) -> str:

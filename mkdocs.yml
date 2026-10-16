@@ -64,13 +64,19 @@ markdown_extensions:
   #    是货币金额而非数学公式，启用后会被逐对匹配成数学式从而排版错乱。
   #    实测全文 $$ 出现 0 次，无需数学渲染。
 
+# 模板页（docs/template.md、docs/template-v1.md）刻意**不放进侧边栏**：
+# 它们是参考资料而非精读，只从首页正文链入，免得占掉导航位。
+# 但文件存在却不出现在 nav 中，MkDocs 默认会告警、--strict 下直接构建失败，
+# 故此处显式降级为忽略。新增此类「不上导航」的页面时，记得同步 gen_nav.py 的 OFF_NAV_PAGES。
+validation:
+  nav:
+    omitted_files: ignore
+
 # 导航由 scripts/gen_nav.py 依据 docs/ 下的文件名自动生成，
 # 新增笔记后运行 `python scripts/gen_nav.py` 即可，请勿手工编辑下方区块。
 # --- NAV BEGIN ---
 nav:
   - 总索引: 'index.md'
-  - 精读模板: 'template.md'
-  - 精读模板 v1.0（历史）: 'template-v1.md'
   - 参考文献清单: 'references.md'
   - '01 · 主线：哥德尔式 RSI 与自我改进智能体':
       - 'Gödel Machine 理论源头': '01-主线-01-Gödel Machine理论源头-精读.md'
@@ -154,6 +160,7 @@ nav:
       - 'SAEScientist-Bench': '08-评测基准-14-SAEScientist-Bench-精读.md'
       - 'SAHOO': '08-评测基准-15-SAHOO-精读.md'
 # --- NAV END ---
+
 
 
 

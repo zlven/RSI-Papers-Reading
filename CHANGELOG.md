@@ -241,12 +241,24 @@ python scripts/extract_refs.py   → 73 篇文献、0 篇待补
   `attr_list` 显式指定：`### 语料与模板的版本落差 {: #version-gap }`、
   `## RSI 分级图例（本系列约定） {: #rsi-grades }`。
 
-**脚本适配**
+**不占导航位**
 
-- `gen_nav.py`：`FRONT_PAGES` 增加 `精读模板 v1.0（历史）`；侧边栏顶部现为
-  总索引 / 精读模板 / 精读模板 v1.0（历史）/ 参考文献清单。
+模板属参考资料而非精读，**不进侧边栏**，只从首页正文那一行「统一模板」链入；
+`docs/index.md` 顶部原本两段（统一模板 + 版本提示）也压回一行指针，细节都留在模板页上。
+
+需要说明的是，本想「折成一个可折叠分组塞到导航底部」，但 `mkdocs.yml` 开着
+`navigation.sections`（顶级分组常驻展开），顶部一级分组根本折叠不起来，两行会一直露着——
+所以摘出导航才是真的角落。
+
+- `gen_nav.py`：新增 `OFF_NAV_PAGES = {"template.md", "template-v1.md"}`——既不进 `render()`
+  的侧边栏，也避开 `collect()` 里「文件名不符合约定」的误报；`FRONT_PAGES` 复归
+  总索引 / 参考文献清单两项。
+- `mkdocs.yml`：新增 `validation.nav.omitted_files: ignore`。文件存在却不出现在 `nav` 中，
+  MkDocs 默认告警、`--strict` 下直接构建失败，故显式降级为忽略。
 - `check_notes.py`：`NOT_A_NOTE` 增加 `template-v1.md`（模板页不套精读模板校验）。
 - `extract_refs.py` 无需改动——它按 `FILENAME_RE` 过滤，模板页天然不匹配。
+
+模板页仍在构建产物里（`/template/`、`/template-v1/` 均 200）并进入中文检索索引，只是不上侧边栏。
 
 **本轮脚本链复核**
 
