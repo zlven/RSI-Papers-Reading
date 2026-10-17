@@ -60,9 +60,17 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
-  # ⚠️ 切勿添加 pymdownx.arithmatex：笔记中的 $15 / $1.91 / $5000 / $22k
-  #    是货币金额而非数学公式，启用后会被逐对匹配成数学式从而排版错乱。
-  #    实测全文 $$ 出现 0 次，无需数学渲染。
+  # 数学公式：采用 generic 模式，只识别 \(...\) 与 \[...\]，
+  # 刻意不启用 $...$ —— 笔记中的 $15 / $1.91 / $5000 / $22k 是货币金额，
+  # 若按 $ 配对会被误当成公式而排版错乱。
+  - pymdownx.arithmatex:
+      generic: true
+
+# MathJax 3：加载顺序必须在配置文件 mathjax.js 之后。
+# tex-mml-chtml 是带 SVG/CHTML 输出与字体缓存的全量包，适合文档站。
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 # 模板页（docs/template.md、docs/template-v1.md）刻意**不放进侧边栏**：
 # 它们是参考资料而非精读，只从首页正文链入，免得占掉导航位。
