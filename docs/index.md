@@ -2,10 +2,10 @@
 
 > 面向 **递归自我改进（Recursive Self-Improvement, RSI）** 的论文精读笔记。所有判断只基于各论文自身文本，不做预设的跨文对比。
 
-> **系列规模**：73 篇精读（主线 24 + 综述 5 + 其他路线 8 + 零数据自博弈 7 + 进化搜索 6 + 经验与上下文 4 + 自动化科研 4 + 评测基准 15）。
+> **系列规模**：85 篇精读（主线 24 + 综述 5 + 其他路线 8 + 零数据自博弈 7 + 进化搜索 6 + 经验与上下文 4 + 自动化科研 4 + 评测基准 15 + 联合递归 12）。
 > **阅读方式**：每篇均为**单独精读**——所有判断只基于该论文自身文本，不做预设的跨文对比；跨文关联仅在该论文自己定位前人工作时、或在结构性分析中明确标注时出现。
-> **深度分档**：笔记按阅读深度分三档，下表每行均已标注——**完整精读** 58 篇（`## 0.`–`## 9.`）、**简读** 6 篇（至少 `## 0.`–`## 4.`）、**卡片式** 9 篇（至少 `## 0.`–`## 2.`）。`scripts/check_notes.py` 按档位校验必备小节，档位不同不算「缺小节」。
-> **统一模板**：各篇一律按[《精读模板 v2.0》](template.md)撰写，节数随上表的深度档位伸缩；现有 73 篇系按 [v1.0](template-v1.md) 写成，两版差异见模板页末的对照表。
+> **深度分档**：笔记按阅读深度分三档，下表每行均已标注——**完整精读** 68 篇（`## 0.`–`## 9.`）、**简读** 8 篇（至少 `## 0.`–`## 4.`）、**卡片式** 9 篇（至少 `## 0.`–`## 2.`）。`scripts/check_notes.py` 按档位校验必备小节，档位不同不算「缺小节」。
+> **统一模板**：各篇一律按[《精读模板 v2.0》](template.md)撰写，节数随上表的深度档位伸缩；现有 85 篇系按 [v1.0](template-v1.md) 写成，两版差异见模板页末的对照表。
 
 ---
 
@@ -151,6 +151,25 @@
 | 14 | [SAEScientist-Bench](08-评测基准-14-SAEScientist-Bench-精读.md) | 卡片式 | 让 Agent 自主做 SAE 可解释性研究——把"AI 做 AI 安全研究"本身变成可测对象 |
 | 15 | [SAHOO](08-评测基准-15-SAHOO-精读.md) | 卡片式 | 监控 RSI 过程的目标漂移（Goal Drift Index + 约束保持）；Workshop 级早期工作，价值主要在问题定义 |
 
+## 09 · 联合递归：权重 × Harness 共进化（12 篇）
+
+> 本簇的统一问题：**当 harness 与模型权重都成为可优化对象，二者怎样协调才不退化成单杠杆？** 12 篇按角色分三类——**联合系统**（真正同时更新两杠杆：WHALE、SIA、ScienceBuddy、HELIX、HASE、EvoTrainer）、**迁移与内化**（harness→权重的单向转移：Harness-Zero、SKILL0、On-Policy Correction）、**诊断与调度**（先判断该动哪个杠杆、再决定怎么排：HarnessCeiling、Multi-Harness RL、HarnessBandit）。
+
+| # | 文件 | 分级 | 深度 | 一句话核心 |
+|---|---|---|---|---|
+| 01 | [WHALE](09-联合递归-01-WHALE-精读.md) | L0 × 双杠杆 | 完整精读 | 权重 RSFT 与 harness 搜索**小步交替**；受控调度研究证明交替优于分段，并给出"证据不足"与"过优化"两端失效的实证标本 |
+| 02 | [SIA](09-联合递归-02-SIA-精读.md) | L2 × 双杠杆 | 完整精读 | 单个 Feedback-Agent 按奖励动态选杠杆（改 harness 或 LoRA+RL）；三域双杠杆均超纯 harness，并自陈"耦合 Goodhart"风险 |
+| 03 | [ScienceBuddy](09-联合递归-03-ScienceBuddy-精读.md) | L5-雏形（证据未证实） | 完整精读 | recursive-in-recursive 双环（内环改 harness、外环训模型）产品化落地；结构符合 L5，但摘要级证据未给出基准数字 |
+| 04 | [HarnessCeiling](09-联合递归-04-HarnessCeiling-精读.md) | N/A（诊断方法论） | 简读 | 不做系统做决策规则：失败构成分析（process vs content）判断该改 harness 还是训权重 + 交叉分解 + placebo adapter 对照 |
+| 05 | [On-Policy Correction](09-联合递归-05-OnPolicyCorrection-精读.md) | L1+ 级联合管线 | 简读 | **必读负结果**：在围绕弱模型进化的 harness 下模仿强专家轨迹，七个企业任务全部回退 4–30 点；修复是 on-policy 轮次级专家纠错 |
+| 06 | [HELIX](09-联合递归-06-HELIX-精读.md) | L5 设计 / 一轮验证 | 完整精读 | 把递归单元从"模型"重定义为 (M_t, Φ_t) 状态对，build→update→rebuild 三阶段闭环；L5 设计但只验证一轮 |
+| 07 | [HASE](09-联合递归-07-HASE-精读.md) | L4- × 双杠杆 | 完整精读 | 单一模型在统一动作空间里既解任务又改 harness，agentic RL 把权重、harness、任务解放进同一循环；8B 打 120B |
+| 08 | [Harness-Zero](09-联合递归-08-HarnessZero-精读.md) | L1+ 级联合管线 | 完整精读 | agent-as-harness 蒸馏：把专用 harness 的行为蒸进权重，部署移除 harness 后 44.3% > 41.7%——harness 当训练期脚手架 |
+| 09 | [SKILL0](09-联合递归-09-SKILL0-精读.md) | L0.5 | 完整精读 | 渐进撤回课程 + on-policy 有用性筛选把技能包内化进权重；推理时零检索、每步 <0.5k token |
+| 10 | [EvoTrainer](09-联合递归-10-EvoTrainer-精读.md) | L1+ | 完整精读 | 策略 × **训练侧** harness 共进化：诊断 rollout → 修订诊断 → 回测干预 → 积累可复用技能，匹配人工工程 RL 参考 |
+| 11 | [Multi-Harness RL](09-联合递归-11-MultiHarnessRL-精读.md) | N/A（诊断/对照） | 完整精读 | 多 harness RL 增益温和（+0.48~0.77pp）且不迁移，而跨 harness 方差 7.13pp 大一个数量级——先修 harness 再谈训练 |
+| 12 | [HarnessBandit](09-联合递归-12-HarnessBandit-精读.md) | L0.5 | 完整精读 | 每步用 bandit 选 harness，信号 = 可学习性 × 迁移性（梯度 sketch 余弦），held-out 任务+harness 上超 mixed-batch |
+
 ---
 
 ## 推荐阅读路径
@@ -165,5 +184,6 @@
    - 评测成本光谱：DGM（单次 ~$22k）→ GEA（~$13k）→ SIFT（~$150，裁判预筛）
 4. **评估方法论深读**：AIDE²（最完备的 Q2 设计）+ DemoEvolve（失败模式审计）+ Bounded-to-Autonomous（验证层级）+ RSIBench-Data / SEABench（08 簇的方法论双璧）
 5. **08 评测基准怎么读**：先 `01-RSIBench-Data`（回路层，看清"改进非单调"）与 `02-SEABench`（安全层，配对设计的范本），再按需扫对象层代理基准（`05` MLE-bench / `03` PaperBench / `07` MLS-Bench）；卡片式 7 篇是快速定位用的地图，不承担方法论深度
+6. **09 联合递归怎么读**：先用 `04-HarnessCeiling`（何时该从 harness 转向权重）与 `11-MultiHarnessRL`（harness 方差主导训练增益）建立决策框架，再读 `01-WHALE` / `02-SIA` 的两种调度范式，随后用 `06-HELIX` 的 build→update→rebuild 与 `03-ScienceBuddy` 的 recursive-in-recursive 对照"联合优化 vs 联合递归"的边界；`05-OnPolicyCorrection` 是必读负结果
 
 > 注意：跨文对照请以上述索引为入口，单篇结论仍以各自的精读文件为准——每篇的分级与判断独立成立。

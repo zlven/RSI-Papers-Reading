@@ -3,7 +3,7 @@
 **递归自我改进（Recursive Self-Improvement, RSI）方向的论文精读笔记。**
 
 从哥德尔机（Gödel Machine）的理论源头出发，沿"自我改进智能体"的实证谱系一路读到评估器可改写的
-前沿工作，并横向覆盖零数据自博弈、进化搜索、经验与上下文、自动化科研等相关路线。
+前沿工作，并横向覆盖零数据自博弈、进化搜索、经验与上下文、自动化科研、权重 × Harness 联合递归等相关路线。
 每篇都是**独立精读**：判断只基于该论文自身文本，不做预设的跨文对比。
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -26,13 +26,14 @@
 | **06 · 经验与上下文** | 4 | 经验资产化的载体谱系：Voyager、ACE、EvolveR、AFlow |
 | **07 · 自动化科研** | 4 | AI Scientist v1/v2、AIDE²、AIDE |
 | **08 · 评测基准** | 15 | "怎样才算真的在改进"：对象层代理基准、回路层审计、安全压测、过程与终身层 |
-| **合计** | **73** | 完整清单见 [`docs/references.md`](docs/references.md) |
+| **09 · 联合递归** | 12 | 权重 × Harness 共进化：WHALE、SIA、ScienceBuddy、HELIX、HASE、EvoTrainer、Harness-Zero、SKILL0、On-Policy Correction、HarnessCeiling、Multi-Harness RL、HarnessBandit |
+| **合计** | **85** | 完整清单见 [`docs/references.md`](docs/references.md) |
 
 ## 分析框架
 
 每篇精读按精读模板撰写（现行 [v2.0](docs/template.md)，另有 [v1.0 历史版本](docs/template-v1.md)——
-现有 73 篇均按 v1.0 写成），节数随阅读深度分**三档**——**完整精读**（`## 0.`–`## 9.`，58 篇）、
-**简读**（至少 `## 0.`–`## 4.`，6 篇）、**卡片式**（至少 `## 0.`–`## 2.`，9 篇）。
+现有 85 篇均按 v1.0 写成），节数随阅读深度分**三档**——**完整精读**（`## 0.`–`## 9.`，68 篇）、
+**简读**（至少 `## 0.`–`## 4.`，8 篇）、**卡片式**（至少 `## 0.`–`## 2.`，9 篇）。
 档位在[总索引](docs/index.md)每行标注；`check_notes.py` 按对应档位校验必备小节，档位不同不算「缺小节」。
 其中两个框架贯穿全系列：
 
@@ -66,10 +67,10 @@
 ├── docs/                      # 站点内容（MkDocs 的文档根目录）
 │   ├── index.md               # 总索引：分级图例 + 评估三问 + 推荐阅读路径
 │   ├── template.md            # 精读模板 v2.0（逐字收录；参考资料，不上侧边栏）
-│   ├── template-v1.md         # 精读模板 v1.0（历史版本，现有 73 篇按此写成）
+│   ├── template-v1.md         # 精读模板 v1.0（历史版本，现有 85 篇按此写成）
 │   ├── references.md          # 参考文献清单（由脚本从笔记自动抽取生成）
 │   ├── 01-主线-01-Gödel Machine理论源头-精读.md
-│   └── …                      # 共 73 篇精读，分 8 个分类
+│   └── …                      # 共 85 篇精读，分 9 个分类
 ├── scripts/                   # 笔记维护脚本
 │   ├── gen_nav.py             # 依文件名重生成 mkdocs.yml 的侧边栏导航
 │   ├── extract_refs.py        # 抽取论文元数据，生成 docs/references.md
@@ -101,7 +102,7 @@ mkdocs serve          # 打开 http://127.0.0.1:8000
 ## 新增一篇精读
 
 文件名必须遵循 `分类号-分类名-序号-标题-精读.md`，例如
-`01-主线-25-NewPaper-精读.md`（分类号 `01`–`08`，分类名须与既有分类一致）。
+`01-主线-25-NewPaper-精读.md`（分类号 `01`–`09`，分类名须与既有分类一致）。
 深度自选：写卡片式笔记，只需在开头的模板说明行里写明「（卡片式）」，
 `check_notes.py` 便会按卡片式档位（`## 0.`–`## 2.`）而非完整档校验，不会误报缺小节。
 之后依次运行：

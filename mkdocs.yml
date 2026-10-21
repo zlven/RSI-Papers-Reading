@@ -3,7 +3,7 @@
 # 严格构建：  mkdocs build --strict
 
 site_name: RSI 文献精读
-site_description: 递归自我改进（Recursive Self-Improvement）论文精读笔记 —— 哥德尔机、自我改进智能体、零数据自博弈、进化搜索等 49 篇
+site_description: 递归自我改进（Recursive Self-Improvement）论文精读笔记 —— 哥德尔机、自我改进智能体、零数据自博弈、进化搜索、权重 × Harness 联合递归等 85 篇
 site_author: 李子林
 # 站点地址与仓库链接（已按 GitHub 用户 zlven 配置）
 site_url: https://zlven.github.io/RSI-Papers-Reading/
@@ -167,7 +167,21 @@ nav:
       - 'AutoLab': '08-评测基准-13-AutoLab-精读.md'
       - 'SAEScientist-Bench': '08-评测基准-14-SAEScientist-Bench-精读.md'
       - 'SAHOO': '08-评测基准-15-SAHOO-精读.md'
+  - '09 · 联合递归：权重 × Harness 共进化':
+      - 'WHALE': '09-联合递归-01-WHALE-精读.md'
+      - 'SIA': '09-联合递归-02-SIA-精读.md'
+      - 'ScienceBuddy': '09-联合递归-03-ScienceBuddy-精读.md'
+      - 'HarnessCeiling': '09-联合递归-04-HarnessCeiling-精读.md'
+      - 'OnPolicyCorrection': '09-联合递归-05-OnPolicyCorrection-精读.md'
+      - 'HELIX': '09-联合递归-06-HELIX-精读.md'
+      - 'HASE': '09-联合递归-07-HASE-精读.md'
+      - 'HarnessZero': '09-联合递归-08-HarnessZero-精读.md'
+      - 'SKILL0': '09-联合递归-09-SKILL0-精读.md'
+      - 'EvoTrainer': '09-联合递归-10-EvoTrainer-精读.md'
+      - 'MultiHarnessRL': '09-联合递归-11-MultiHarnessRL-精读.md'
+      - 'HarnessBandit': '09-联合递归-12-HarnessBandit-精读.md'
 # --- NAV END ---
+
 
 
 

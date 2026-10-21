@@ -3,7 +3,7 @@
 > 本清单由仓库根目录的 `scripts/extract_refs.py` 从各篇精读头部的「论文信息」块自动抽取生成，运行该脚本即可刷新。
 > 脚本只转录笔记中已写明的内容，**不猜测 arXiv 编号**；标注「待补」的条目表示原笔记未写明编号（笔记头部已声明「非 arXiv 文献」的条目不在此列，如 HALO 是开源项目、Anthropic 是立场报告、FunSearch 只有 Nature 版）。
 
-共 73 篇文献。
+共 85 篇文献。
 
 | 分类 | 篇数 |
 |---|---|
@@ -15,6 +15,7 @@
 | 06 · 经验与上下文 | 4 |
 | 07 · 自动化科研 | 4 |
 | 08 · 评测基准 | 15 |
+| 09 · 联合递归：权重 × Harness 共进化 | 12 |
 
 ## 01 · 主线：哥德尔式 RSI 与自我改进智能体
 
@@ -128,3 +129,20 @@
 | 13 | AutoLab（Can Frontier Models Solve Long-Horizon Auto Research and Engineering Tasks?） | Zhangchen Xu 等 | arXiv:2606.05080（2026-06） | [arXiv:2606.05080](https://arxiv.org/abs/2606.05080) | [笔记](08-评测基准-13-AutoLab-精读.md) |
 | 14 | SAEScientist-Bench（Can AI Agents Conduct Autonomous SAE Interpretability Research?） | Yuqiao Tan、Shizhu He、Jun Zhao、Kang Liu | arXiv:2609.09113（2026-09） | [arXiv:2609.09113](https://arxiv.org/abs/2609.09113) | [笔记](08-评测基准-14-SAEScientist-Bench-精读.md) |
 | 15 | SAHOO（RSI 过程目标漂移监控） | Subramanyam Sahoo、Aman Chadha、Vinija Jain、Divya Chaudhary | ICLR 2026 Workshop on AI with Recursive Self-Improvemen… | [arXiv:2603.06333](https://arxiv.org/abs/2603.06333) | [笔记](08-评测基准-15-SAHOO-精读.md) |
+
+## 09 · 联合递归：权重 × Harness 共进化
+
+| # | 论文 | 作者 / 团队 | 发表 | 链接 | 精读 |
+|---|---|---|---|---|---|
+| 01 | WHALE: Weight-Harness Alternating Learning | Yoonho Lee | 预印本 2026 | [arXiv:2609.00196](https://arxiv.org/abs/2609.00196) | [笔记](09-联合递归-01-WHALE-精读.md) |
+| 02 | Self Improving AI with Harness & Weight Updates | Prannay Hebbar、Yogendra Manawat、Samuel Verboomen、Alesia Ivanova、Selvam Palanimalai、Kuna… | 预印本 2026 | [arXiv:2605.27276](https://arxiv.org/abs/2605.27276) | [笔记](09-联合递归-02-SIA-精读.md) |
+| 03 | Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents | Shuhan Xue、Jianyuan Zhong、Ziyuan Nan、Wenbin Li、Zhaochen Yu 等 | 预印本 2026 | [arXiv:2609.17523](https://arxiv.org/abs/2609.17523) | [笔记](09-联合递归-03-ScienceBuddy-精读.md) |
+| 04 | Harness Evolution Hits a Ceiling: When Weight Training Should Begin | Yuan Tian 等 | 预印本 2026 | [arXiv:2610.11655](https://arxiv.org/abs/2610.11655) | [笔记](09-联合递归-04-HarnessCeiling-精读.md) |
+| 05 | Co-Evolving Harnesses and Models | Zhou Yu、Bin Bi、Shiva Kumar Pentyala、Shubham Mehrotra、Sougata Chaudhuri、Shilpa Bhagavath… | 预印本 2026 | [arXiv:2609.09134](https://arxiv.org/abs/2609.09134) | [笔记](09-联合递归-05-OnPolicyCorrection-精读.md) |
+| 06 | Model-Harness Co-evolution for Recursive Self-Improvement | Tianyu Fan、Chao Huang 等（HKUDS，香港大学） | 预印本 2026 | [arXiv:2608.13951](https://arxiv.org/abs/2608.13951) | [笔记](09-联合递归-06-HELIX-精读.md) |
+| 07 | Harness-Aware Self-Evolving: Co-Evolving Model Weights, Harness, and Task Solutions | —（笔记未列作者） | 预印本 2026 | [arXiv:2607.03935](https://arxiv.org/abs/2607.03935) | [笔记](09-联合递归-07-HASE-精读.md) |
+| 08 | Harness-Zero: Harness Distillation via Agent-as-Harness | —（笔记未列作者） | 预印本 2026 | [arXiv:2609.24974](https://arxiv.org/abs/2609.24974) | [笔记](09-联合递归-08-HarnessZero-精读.md) |
+| 09 | SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization | —（笔记未列作者） | 预印本 2026 | [arXiv:2604.02268](https://arxiv.org/abs/2604.02268) | [笔记](09-联合递归-09-SKILL0-精读.md) |
+| 10 | EvoTrainer: Co-Evolving LLM Policies and Training Harnesses for Autonomous Agentic Reinforcement Learning | —（笔记未列作者） | 预印本 2026 | [arXiv:2606.03108](https://arxiv.org/abs/2606.03108) | [笔记](09-联合递归-10-EvoTrainer-精读.md) |
+| 11 | Multi-Harness Reinforcement Learning for Coding Agents: Training Gains and Harness Dependence | —（笔记未列作者） | 预印本 2026 | [arXiv:2609.04518](https://arxiv.org/abs/2609.04518) | [笔记](09-联合递归-11-MultiHarnessRL-精读.md) |
+| 12 | HarnessBandit: Joint Learnability-Transferability Scheduling for Multi-Harness Agentic Reinforcement Learning | —（笔记未列作者） | 预印本 2026 | [arXiv:2609.13739](https://arxiv.org/abs/2609.13739) | [笔记](09-联合递归-12-HarnessBandit-精读.md) |

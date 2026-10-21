@@ -75,6 +75,7 @@ CATEGORY_TITLES = {
     "06": "06 · 经验与上下文",
     "07": "07 · 自动化科研",
     "08": "08 · 评测基准",
+    "09": "09 · 联合递归：权重 × Harness 共进化",
 }
 
 # 少数条目的自动抽取不理想，手工指定。
@@ -110,6 +111,49 @@ OVERRIDES: dict[str, dict[str, str]] = {
     },
     "08-评测基准-11-RSI-Bench-精读.md": {
         "link": "[sunghunkwag/rsi-bench](https://github.com/sunghunkwag/rsi-bench)",
+    },
+    # 09 簇若干条目的自动抽取不理想：H1 的简称前缀被截掉、ScienceBuddy 被误判为
+    # Science 正刊、06–12 的头部用「> 论文信息：*<英文标题>*」且未列作者。手工指定。
+    "09-联合递归-01-WHALE-精读.md": {
+        "title": "WHALE: Weight-Harness Alternating Learning",
+    },
+    "09-联合递归-03-ScienceBuddy-精读.md": {
+        # H1 里的 ScienceBuddy 含 "Science"，会被会议名正则误判为 Science 正刊
+        "venue": "预印本 2026",
+    },
+    "09-联合递归-04-HarnessCeiling-精读.md": {
+        "title": "Harness Evolution Hits a Ceiling: When Weight Training Should Begin",
+    },
+    "09-联合递归-05-OnPolicyCorrection-精读.md": {
+        "title": "Co-Evolving Harnesses and Models",
+    },
+    "09-联合递归-06-HELIX-精读.md": {
+        "title": "Model-Harness Co-evolution for Recursive Self-Improvement",
+        "authors": "Tianyu Fan、Chao Huang 等（HKUDS，香港大学）",
+    },
+    "09-联合递归-07-HASE-精读.md": {
+        "title": "Harness-Aware Self-Evolving: Co-Evolving Model Weights, Harness, and Task Solutions",
+        "authors": "—（笔记未列作者）",
+    },
+    "09-联合递归-08-HarnessZero-精读.md": {
+        "title": "Harness-Zero: Harness Distillation via Agent-as-Harness",
+        "authors": "—（笔记未列作者）",
+    },
+    "09-联合递归-09-SKILL0-精读.md": {
+        "title": "SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization",
+        "authors": "—（笔记未列作者）",
+    },
+    "09-联合递归-10-EvoTrainer-精读.md": {
+        "title": "EvoTrainer: Co-Evolving LLM Policies and Training Harnesses for Autonomous Agentic Reinforcement Learning",
+        "authors": "—（笔记未列作者）",
+    },
+    "09-联合递归-11-MultiHarnessRL-精读.md": {
+        "title": "Multi-Harness Reinforcement Learning for Coding Agents: Training Gains and Harness Dependence",
+        "authors": "—（笔记未列作者）",
+    },
+    "09-联合递归-12-HarnessBandit-精读.md": {
+        "title": "HarnessBandit: Joint Learnability-Transferability Scheduling for Multi-Harness Agentic Reinforcement Learning",
+        "authors": "—（笔记未列作者）",
     },
 }
 

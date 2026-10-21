@@ -2,6 +2,33 @@
 
 本文件记录笔记与仓库结构的变更。仓库尚在持续扩充中。
 
+## 2026-10-21 — 扩充至 85 篇：新增「09 · 联合递归」12 篇
+
+**新增分类与精读（12 篇，`docs/09-联合递归-*`）**
+
+本簇聚焦权重 × Harness 的联合优化与共进化，按角色分三类：
+
+- **联合系统（6 篇）**——WHALE（L0 × 双杠杆，小步交替调度）、SIA（L2 × 双杠杆，
+  Feedback-Agent 动态选杠杆）、ScienceBuddy（L5-雏形，recursive-in-recursive）、
+  HELIX（L5 设计 / 一轮验证，build→update→rebuild）、HASE（L4- × 双杠杆，统一动作空间）、
+  EvoTrainer（L1+，策略 × 训练侧 harness）。
+- **迁移与内化（3 篇）**——Harness-Zero（L1+，harness 蒸馏）、SKILL0（L0.5，技能内化）、
+  On-Policy Correction（L1+，围绕进化 harness 做模仿的必读负结果）。
+- **诊断与调度（3 篇）**——HarnessCeiling（诊断方法论）、Multi-Harness RL（对照研究）、
+  HarnessBandit（bandit 调度）。
+
+深度：完整精读 10 篇，简读 2 篇（HarnessCeiling、On-Policy Correction）。
+
+**库更新**
+
+- `scripts/gen_nav.py` / `scripts/extract_refs.py` 新增分类号 `09` 与分组标题映射；
+  侧边栏变为 **9 个分组、85 条导航**。
+- `docs/index.md` 新增 09 表与「09 联合递归怎么读」路径；系列规模更新为 85 篇
+  （完整 68 / 简读 8 / 卡片式 9）。
+- `docs/references.md` 重新生成：**85 篇、0 篇待补**；06–12 的作者/标题按笔记原文
+  手工修正（这些笔记头部未用粗体字段，自动抽取会把「论文信息：」或 H1 前缀当成标题）。
+- `README.md`、`mkdocs.yml` 站点描述、`docs/template*.md` 中的规模数字同步更新。
+
 ## 2026-10-17 — 修复 HGM 篇公式渲染
 
 - 启用 `pymdownx.arithmatex`（**generic 模式**）并接入 MathJax 3：
